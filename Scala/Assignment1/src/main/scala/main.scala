@@ -4,6 +4,7 @@
   val number = 5;
 
   val average = arrayAverage(a);
+  println(average);
   val median = arrayMedian(a);
   printCapital(strings);
   val sum = recursiveSum(a, 0);
@@ -17,8 +18,8 @@
   
 
 // Make a function that returns the average of an array
-def arrayAverage(arr: Array[Int]) : Int = {
-  var sum = 0;
+def arrayAverage(arr: Array[Int]) : Double = {
+  var sum = 0f;
   for(i <- arr){
     sum += i
   }
