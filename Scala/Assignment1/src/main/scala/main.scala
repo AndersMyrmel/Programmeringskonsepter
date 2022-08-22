@@ -1,11 +1,13 @@
 @main def run() = {
   val a = Array(1,0,11,4,7,6,5,3,8,2,9,13);
   val strings = Array("Come", "On", "You", "Spurs");
+  val number = 5;
 
   val average = arrayAverage(a);
   val median = arrayMedian(a);
   printCapital(strings);
   val sum = recursiveSum(a, 0);
+  val factor = recursiveFactorial(number);
 }
   
 
@@ -26,7 +28,7 @@ def arrayMedian(arr: Array[Int]) : Double = {
   val temp = arr.sorted;
   if (temp.length % 2 != 0){
     return(temp(temp.length/2))
-  } else{
+  } else {
     return(((temp(temp.length/2 - 1).toFloat) + (temp(temp.length/2).toFloat)) / 2);
   }
   return -1;
@@ -58,5 +60,13 @@ def recursiveSum(arr : Array[Int], sum: Int) : Int = {
     return recursiveSum(newArr, newSum);
   }
 }
-    
+
+// Implement a recursive factorial function. The function should take in an int and return the factor of the int.
+def recursiveFactorial(num: Int) : Int = {
+  if (num > 1){
+    return (num*recursiveFactorial(num-1));
+  } else {
+    return 1;
+  }
+}
   
