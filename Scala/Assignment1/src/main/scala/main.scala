@@ -83,6 +83,4 @@ def isEven(num: Int) : Boolean = {
     return false;
   }
 }
-
-
   
