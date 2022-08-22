@@ -12,7 +12,7 @@
 
   //Make an anonymous (lambda) function that takes int as input and returns boolean if the number is divisible by 2. Use it to filter a list.
   val lambdaFilter = (arr : Array[Int]) => arr.filter((_ % 2 == 0))
-  var filtered = lambdaFilter(a)
+  val filtered = lambdaFilter(a)
 }
   
 
