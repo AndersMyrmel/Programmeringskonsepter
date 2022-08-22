@@ -40,7 +40,7 @@ def arrayMedian(arr: Array[Int]) : Double = {
 }
 
 //Make a function that takes an array of String as input, and prints the capital letters.
-def printCapital(arr : Array[String]) = {
+def printCapital(arr : Array[String]) : Unit = {
   var i, j = 0;
   while (i < arr.length){
     while (j < arr(i).length){
