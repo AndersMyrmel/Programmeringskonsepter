@@ -8,6 +8,7 @@
   printCapital(strings);
   val sum = recursiveSum(a, 0);
   val factor = recursiveFactorial(number);
+  val filteredList = a.filter(isEven(_))
 }
   
 
@@ -67,6 +68,15 @@ def recursiveFactorial(num: Int) : Int = {
     return (num*recursiveFactorial(num-1));
   } else {
     return 1;
+  }
+}
+
+// Make a non-anonymous function that takes int as input and returns boolean if the number is divisible by 2. Use it to filter a list.
+def isEven(num: Int) : Boolean = {
+  if (num % 2 == 0){
+    return true;
+  } else {
+    return false;
   }
 }
   
