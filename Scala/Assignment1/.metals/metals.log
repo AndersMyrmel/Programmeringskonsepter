@@ -1,0 +1,22 @@
+2022.08.22 15:31:02 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\Anders\Desktop\assignment1\.metals\lsp.trace.json or C:\Users\Anders\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.08.22 15:31:03 INFO  logging to file C:\Users\Anders\Desktop\assignment1\.metals\metals.log
+2022.08.22 15:31:03 INFO  Started: Metals version 0.11.8 in workspace 'C:\Users\Anders\Desktop\assignment1' for client Visual Studio Code 1.70.1.
+2022.08.22 15:31:04 WARN  Flyway upgrade recommended: H2 2.1.214 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.1.210.
+2022.08.22 15:31:05 INFO  time: initialize in 2.18s
+2022.08.22 15:31:07 WARN  Build server is not auto-connectable.
+2022.08.22 15:31:16 WARN  no build target for: C:\Users\Anders\Desktop\assignment1\src\main\scala\main.scala
+2022.08.22 15:31:21 INFO  no build target found for C:\Users\Anders\Desktop\assignment1\src\main\scala\main.scala. Using presentation compiler with project's scala-library version: 3.1.3
+2022.08.22 15:31:24 INFO  time: code lens generation in 2.22s
+2022.08.22 15:31:24 INFO  time: code lens generation in 2.21s
+2022.08.22 15:31:28 INFO  shutting down Metals
+2022.08.22 15:31:44 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\Anders\Desktop\assignment1\.metals\lsp.trace.json or C:\Users\Anders\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.08.22 15:31:45 INFO  logging to file C:\Users\Anders\Desktop\assignment1\.metals\metals.log
+2022.08.22 15:31:45 INFO  Started: Metals version 0.11.8 in workspace 'C:\Users\Anders\Desktop\assignment1' for client Visual Studio Code 1.70.2.
+2022.08.22 15:31:46 WARN  Flyway upgrade recommended: H2 2.1.214 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.1.210.
+2022.08.22 15:31:47 INFO  time: initialize in 1.98s
+2022.08.22 15:31:49 WARN  Build server is not auto-connectable.
+2022.08.22 15:31:49 WARN  no build target for: C:\Users\Anders\Desktop\assignment1\src\main\scala\main.scala
+2022.08.22 15:31:49 INFO  skipping build import with status 'Requested'
+2022.08.22 15:31:53 INFO  no build target found for C:\Users\Anders\Desktop\assignment1\src\main\scala\main.scala. Using presentation compiler with project's scala-library version: 3.1.3
+2022.08.22 15:31:57 INFO  time: code lens generation in 6.65s
+2022.08.22 15:34:25 INFO  shutting down Metals
