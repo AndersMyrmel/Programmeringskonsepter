@@ -19,10 +19,8 @@
 // Make a function that returns the average of an array
 def arrayAverage(arr: Array[Int]) : Int = {
   var sum = 0;
-  var i = 0;
-  while (i < arr.length){
-    sum += arr(i);
-    i += 1;
+  for(i <- arr){
+    sum += i
   }
   sum = (sum/arr.length)
   return sum;
