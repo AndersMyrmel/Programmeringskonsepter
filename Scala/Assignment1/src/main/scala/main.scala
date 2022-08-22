@@ -1,9 +1,11 @@
 @main def run() = {
   val a = Array(1,0,11,4,7,6,5,3,8,2,9,13);
   val strings = Array("Come", "On", "You", "Spurs");
+
   val average = arrayAverage(a);
   val median = arrayMedian(a);
   printCapital(strings);
+  val sum = recursiveSum(a, 0);
 }
   
 
@@ -42,6 +44,18 @@ def printCapital(arr : Array[String]) = {
     }
     j = 0
     i += 1
+  }
+}
+
+// Write a recursive sum function that takes in an array of Ints, and returns the sum
+def recursiveSum(arr : Array[Int], sum: Int) : Int = {
+  if (arr.length == 0){
+    return sum;
+  }
+  else {
+    var newSum = sum + arr(0);
+    var newArr = arr.tail;
+    return recursiveSum(newArr, newSum);
   }
 }
     
