@@ -199,3 +199,11 @@ WARNING: Unmatched cancel notification for request id 27
 2022.08.22 17:06:16 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
 2022.08.22 17:06:25 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
 2022.08.22 17:06:32 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.22 17:07:41 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.22 17:07:47 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.22 17:07:54 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.22 17:08:00 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.22 17:08:10 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.22 17:09:27 INFO  shutting down Metals
+2022.08.22 17:12:01 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\Anders\Programmeringskonsepter\.metals\lsp.trace.json or C:\Users\Anders\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.08.22 17:12:02 INFO  logging to file C:\Users\Anders\Programmeringskonsepter\.metals\metals.log
