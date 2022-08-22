@@ -4,7 +4,6 @@
   val number = 5;
 
   val average = arrayAverage(a);
-  println(average);
   val median = arrayMedian(a);
   printCapital(strings);
   val sum = recursiveSum(a, 0);
@@ -35,7 +34,6 @@ def arrayMedian(arr: Array[Int]) : Double = {
   } else {
     return(((temp(temp.length/2 - 1).toFloat) + (temp(temp.length/2).toFloat)) / 2);
   }
-  return -1;
 }
 
 //Make a function that takes an array of String as input, and prints the capital letters.
