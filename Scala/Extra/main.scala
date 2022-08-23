@@ -29,29 +29,31 @@ def getPuzzle(fileName : String): Array[Array[Int]] = {
     val puzzle = Array.ofDim[Int](size, size);
     var row = 0;
     var column = 0;
+    var twice = 0;
 
     for (line <- Source.fromFile(fileName).getLines.drop(2)){
          for (i <- line){
             if (i.isDigit){
-                println((i, (row, column)));
-                puzzle(row)(column) = i.toInt - 48;
+                puzzle(column)(row) = i.toInt - 48;
                 row += 1;
-                if (row >= size -1 && column >= size -1){
+                if (row == size -1 && column == size -1){
                     return puzzle;
                 }
-                else if (row  >= size){
+                else if (row == size){
                     row = 0;
                     column += 1;
                 }
             }
-            else if (i.toChar == '_') {
-                println((0,(row, column)));
-                puzzle(row)(column) = 0;
-                row += 1;
-                if (row >= size -1 && column >= size -1){
+            else if (i == '_' ) {
+                twice += 1;
+                if (twice == 2){
+                    twice = 0;
+                    row += 1;
+                }
+                if (row == size -1 && column == size-1){
                     return puzzle;
                 }
-                else if (row  >= size){
+                else if (row == size){
                     row = 0;
                     column += 1;
                 }
