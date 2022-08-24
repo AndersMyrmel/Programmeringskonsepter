@@ -10,12 +10,26 @@ import scala.io.Source
 
 @main def run() = {
     val fileName = "./Scala/Extra/Unequal.txt";
-    var puzzle = readPuzzle(fileName); // Index (i,j) = I x N + J    N = Size
-    val constraints = getConstraints(fileName);
-    constraints.foreach(print);
+    val size = getSize(fileName)
+    var puzzle = readPuzzle(fileName, size); // Index (i,j) = I x N + J    N = Size
+    val constraints = getConstraints(fileName, size);
+    printPuzzle(puzzle, size)
 }
 
-def readPuzzle(fileName : String) : Array[Int] = {
+// Main solving function
+def solvePuzzle(puzzle: Array[Int], constraints: Array[Int]) : Boolean = {
+    return false;
+
+}
+
+// Check wheter it is legal to assign a particular number to a given box on the grid
+def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, col: Int, number: Int) : Boolean = {
+    return false;
+}
+
+
+// Read the puzzle and store it in a one dimensional array
+def readPuzzle(fileName : String, size: Int) : Array[Int] = {
     val size = getSize(fileName);
     val puzzle = Array.ofDim[Int](size*size);
     var twice = 0;
@@ -42,11 +56,13 @@ def readPuzzle(fileName : String) : Array[Int] = {
     return puzzle;
 }
 
+// Constraints are saved in a seperate array
+// For each box we store a value that encodes the relationship to the box to the left and below
 // 1 = Box is less than box to the left (>)
 // 2 = Box is greater than box to the left (<)
 // 4 = Box is greater than box above (A)
 // 8 = Box is less than box above (V)
-def getConstraints(fileName : String) : Array[Int] = {
+def getConstraints(fileName : String, size: Int) : Array[Int] = {
     val size = getSize(fileName);
     val puzzle = Array.ofDim[Int](size*size);
     var twice = 0;
@@ -67,11 +83,9 @@ def getConstraints(fileName : String) : Array[Int] = {
             }
             else if (i == 'A'){
                 puzzle(count) = 4;
-                
             }
             else if (i == 'V'){
                 puzzle(count) = 8;
-                
             }
             else if (i == '_' ) {
                 twice += 1;
@@ -83,7 +97,6 @@ def getConstraints(fileName : String) : Array[Int] = {
         }
     }
     return puzzle;
-
 }
 
 // Get the width and height of a puzzle
@@ -94,4 +107,17 @@ def getSize(fileName : String) : Int = {
         }
     }
     return -1;
+}
+
+// Display puzzle in terminal
+def printPuzzle(puzzle: Array[Int], size: Int) : Unit = {
+    var count = 0;
+    for (i <- puzzle){
+        print(puzzle(count))
+        print(" ")
+        count += 1
+        if (count % size == 0){
+            println()
+        }
+    }
 }
