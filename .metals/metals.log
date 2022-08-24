@@ -955,3 +955,143 @@ WARNING: Unmatched cancel notification for request id 10843
 2022.08.23 20:05:04 INFO  shutting down Metals
 2022.08.23 20:15:02 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\Anders\Programmeringskonsepter\.metals\lsp.trace.json or C:\Users\Anders\AppData\Local\scalameta\metals\cache\lsp.trace.json
 2022.08.23 20:15:03 INFO  logging to file C:\Users\Anders\Programmeringskonsepter\.metals\metals.log
+2022.08.23 20:15:03 INFO  Started: Metals version 0.11.8 in workspace 'C:\Users\Anders\Programmeringskonsepter' for client Visual Studio Code 1.70.2.
+2022.08.23 20:15:04 WARN  Flyway upgrade recommended: H2 2.1.214 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.1.210.
+2022.08.23 20:15:05 INFO  time: initialize in 1.96s
+2022.08.23 20:15:07 WARN  Build server is not auto-connectable.
+2022.08.23 20:15:07 WARN  no build tool detected in workspace 'C:\Users\Anders\Programmeringskonsepter'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2022.08.23 20:15:07 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:15:09 INFO  no build target found for C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala. Using presentation compiler with project's scala-library version: 3.1.3
+2022.08.23 20:15:11 INFO  time: code lens generation in 4.03s
+2022.08.23 20:16:07 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:16:32 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:17:03 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:17:23 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:17:31 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:17:45 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:17:52 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:19:06 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:19:16 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:19:25 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:19:37 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:20:00 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:20:09 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+Aug 23, 2022 8:20:19 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 516
+2022.08.23 20:20:21 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:20:34 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:21:12 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:21:23 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:21:24 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:22:07 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:22:49 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:22:56 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:23:01 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:23:23 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+Exception in thread "pool-3-thread-1" java.lang.InterruptedException
+	at scala.meta.internal.metals.FutureCancelToken.checkCanceled(FutureCancelToken.scala:29)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:195)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2022.08.23 20:23:40 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:23:43 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:24:01 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:24:26 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:24:37 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:24:48 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:25:22 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:25:35 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:25:47 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:26:56 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:27:48 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:28:22 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:29:10 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:29:14 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:29:37 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:29:45 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:29:55 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+Aug 23, 2022 8:30:49 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1710
+2022.08.23 20:31:01 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:31:06 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:31:22 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:31:31 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:32:23 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:32:35 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:32:52 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:33:03 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:33:47 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:33:55 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:34:09 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:34:14 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:34:30 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:34:32 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:34:35 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:34:40 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:34:50 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:35:34 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:35:41 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:35:42 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:36:45 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:36:59 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:37:01 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:37:20 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:38:28 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:38:41 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:39:06 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:40:07 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:40:43 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:41:11 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:41:39 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:41:51 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:41:57 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:42:28 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:43:12 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:43:12 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:43:20 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:43:25 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:44:08 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:44:20 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:44:53 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+Aug 23, 2022 8:45:13 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3091
+2022.08.23 20:45:13 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:45:19 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:45:31 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:46:32 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+Aug 23, 2022 8:47:11 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3215
+2022.08.23 20:47:22 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:47:35 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:47:47 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:47:59 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:48:10 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:49:24 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:49:46 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:49:50 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:50:16 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:50:30 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:50:51 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:51:09 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:51:29 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:51:54 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:52:10 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:52:30 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:53:17 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:53:26 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:53:42 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:53:55 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:54:20 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:54:30 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:54:50 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:55:07 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:55:18 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:55:59 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:58:44 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:59:26 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 20:59:50 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Extra\main.scala
+2022.08.23 21:29:58 INFO  shutting down Metals
+2022.08.24 16:22:56 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\Anders\Programmeringskonsepter\.metals\lsp.trace.json or C:\Users\Anders\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.08.24 16:22:58 INFO  logging to file C:\Users\Anders\Programmeringskonsepter\.metals\metals.log
