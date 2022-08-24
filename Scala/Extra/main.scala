@@ -1,4 +1,5 @@
 import scala.io.Source
+import scala.util.Random
 
 // Create a puzzle input file, as shown in Canvas (Pages/Description: Unequal)
 // • Read the file, print out the number of puzzles and their sizes
@@ -9,7 +10,9 @@ import scala.io.Source
     val fileName = "./Scala/Extra/Unequal.txt";
     var puzzle = getPuzzle(fileName);
     puzzle = getConstraints(fileName, puzzle);
-    printPuzzle(puzzle);
+    val result = solvePuzzle(puzzle)
+    printPuzzle(result);
+    
 }
 
 class Cell(var x : Int) {
@@ -37,6 +40,68 @@ class Cell(var x : Int) {
     }
 }
 
+def solvePuzzle(puzzle : Array[Array[Cell]]) : Array[Array[Cell]] = {
+    var row, col = 0;
+    var check = true;
+    var number = Random.nextInt(4);
+
+    //val column = getColumn(1, puzzle);
+//
+    //printColumn(column)
+//
+    //while(row < puzzle.length){
+    //    print(puzzle(row)(col).number);
+    //    row += 1;
+    //}
+    
+    while(row < puzzle.length){
+        
+        while(col < puzzle(row).length){
+            val column = getColumn(row, puzzle);
+
+            if (puzzle(row)(col).number == 0){
+                while (check == true){
+                    if (puzzle(row).exists(y => (y.number == number)) || column.contains(x => (x.number == number))){
+                        number = Random.between(1, 5);
+                        println(number)
+                    }
+                    else{
+                        puzzle(row)(col).setNumber(number);
+                        check = false;
+                    }
+                }
+            
+                
+
+
+
+                //while (puzzle(row).exists(y => (y.number == number)) && column.exists(y =>(y.number == number))) {
+                //    number = Random.between(1, 5);
+                //    println(number)
+                //    }
+                //    puzzle(row)(col).setNumber(number)
+            }
+            col += 1;
+            check = true;
+        }
+        row += 1;
+        col = 0;
+    }
+    return puzzle;
+}
+
+def getColumn(n: Int, a: Array[Array[Cell]]) = a.map{_(n)}
+
+def printColumn(col: Array[Cell]) : Unit = {
+    var row = 0;
+    println()
+    while(row < col.length){
+        print(col(row).number);
+        row += 1;
+    }
+    println()
+}
+
 // Read the file, print out the number of puzzles and their sizes
 def readFile(fileName : String) = {
     for (line <- Source.fromFile(fileName).getLines){
@@ -47,6 +112,7 @@ def readFile(fileName : String) = {
         }
     }
 }
+
 
 // Display the puzzle in console
 def printPuzzle(puzzle : Array[Array[Cell]]) : Unit = {
@@ -108,8 +174,6 @@ def getConstraints(fileName : String, puzzle : Array[Array[Cell]]): Array[Array[
     var row = 0;
     var column = 0;
     var twice = 0;
-
-    var test = 3
 
     for (line <- Source.fromFile(fileName).getLines.drop(2)){
          for (i <- line){
