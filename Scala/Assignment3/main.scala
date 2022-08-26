@@ -15,6 +15,7 @@ import scala.util.Random
 
     while(!isSolved(board, pieces)){
         solvePuzzle(board, pieces)
+        printPieces(pieces)
     }
 }
 
@@ -65,7 +66,6 @@ def solvePuzzle(board: Array[Square], pieces: Array[Piece]) : Unit = {
             val temp = pieces(i);
             pieces(i) = pieces(random);
             pieces(random) = temp;
-            printPieces(pieces)
             }
     }
 }
