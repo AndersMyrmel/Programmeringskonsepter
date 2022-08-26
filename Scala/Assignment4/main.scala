@@ -12,9 +12,8 @@ import scala.language.implicitConversions
     val booleanInteger: Int = true
 }
 
-// Make a simple function translating from one language to another,
-// e.g. Norwegian to English. The function should go take a Norwegian
-// String as input and return an English String.
+// Make a simple function translating from one language to another, e.g. Norwegian to English. 
+// The function should go take a Norwegian String as input and return an English String.
 def translateToEnglish(s: String) : String = {
     val words = Map("Hei" -> "Hello", "Hadet" -> "Bye", "Skole" -> "School")
     return words(s)
@@ -26,9 +25,8 @@ def uniqueList(l: List[Int]) : List[Int] = {
     return l.toSet.toList
 }
 
-// Create a logger-object that always prints out the updated line
-// number along with a user-given log message. E.g. (1) This is the log
-// from the first line. (2) This is the log from the second, etc.
+// Create a logger-object that always prints out the updated line number along with a user-given log message. 
+// E.g. (1) This is the log from the first line. (2) This is the log from the second, etc.
 object Logger {
     var count = 1;
 
@@ -46,9 +44,8 @@ object Logger {
     }
 }
 
-// Make a calculator that holds a number and can add, subtract,
-// divide and multiply any integer number to that number. All
-// functions should be without side effects.
+// Make a calculator that holds a number and can add, subtract, divide and multiply 
+// any integer number to that number. All functions should be without side effects.
 object Calculator {
     var num = 100f;
 
@@ -66,7 +63,6 @@ object Calculator {
     }
 }
 
-// Make an implicit function that changes boolean into int so that it
-// can be used in multiplication. E.g. true*4 should be equal to 4.
-// False*9 should be equal to 0.
+// Make an implicit function that changes boolean into int so that it can be used in multiplication. 
+// E.g. true*4 should be equal to 4. False*9 should be equal to 0.
 implicit def boolToInt(x : Boolean) : Int = if (x) 1 else 0
