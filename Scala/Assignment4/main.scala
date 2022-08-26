@@ -1,10 +1,15 @@
+import scala.language.implicitConversions
+
 @main def run() = {
     Logger.printMessage("message")
     Logger.printMessage("message")
     Logger.printMessage("message")
+    Calculator.divide(6)
+    Calculator.multiply(13)
     val list = List(1, 2, 3, 4, 5, 5)
     val newList = uniqueList(list)
     val translated = translateToEnglish("Hadet")
+    val booleanInteger: Int = true
 }
 
 // Make a simple function translating from one language to another,
@@ -40,5 +45,30 @@ object Logger {
         case _ => return(num.toString() + "th")
     }
 }
+
+// Make a calculator that holds a number and can add, subtract,
+// divide and multiply any integer number to that number. All
+// functions should be without side effects.
+object Calculator {
+    var num = 100f;
+
+    def add(x: Int) : Unit = {
+        num += x;
+    }
+    def subtract(x: Int) : Unit = {
+        num -= x;
+    }
+    def divide(x: Int) : Unit = {
+        num /= x;
+    }
+    def multiply(x: Int) : Unit = {
+        num *= x;
+    }
+}
+
+// Make an implicit function that changes boolean into int so that it
+// can be used in multiplication. E.g. true*4 should be equal to 4.
+// False*9 should be equal to 0.
+implicit def boolToInt(x : Boolean) : Int = if (x) 1 else 0
 
 
