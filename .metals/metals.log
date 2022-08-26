@@ -6538,3 +6538,144 @@ WARNING: Unmatched cancel notification for request id 14196
 2022.08.26 20:25:05 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment3\main.scala
 2022.08.26 20:28:41 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment3\main.scala
 2022.08.26 20:28:48 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment3\main.scala
+2022.08.26 20:42:44 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+Aug 26, 2022 8:42:45 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: Toplevel definition solvePuzzle is defined in
+  C:\Users\Anders\Programmeringskonsepter\Scala\Extra\alternative.scala
+and also in
+  C:\Users\Anders\Programmeringskonsepter\Scala\Assignment3\main.scala
+One of these files should be removed from the classpath.
+dotty.tools.dotc.core.TypeError: Toplevel definition solvePuzzle is defined in
+  C:\Users\Anders\Programmeringskonsepter\Scala\Extra\alternative.scala
+and also in
+  C:\Users\Anders\Programmeringskonsepter\Scala\Assignment3\main.scala
+One of these files should be removed from the classpath.
+	at dotty.tools.dotc.core.SymDenotations$PackageClassDenotation.dropStale$1(SymDenotations.scala:2431)
+	at dotty.tools.dotc.core.SymDenotations$PackageClassDenotation.recur$5(SymDenotations.scala:2395)
+	at dotty.tools.dotc.core.SymDenotations$PackageClassDenotation.computeMembersNamed(SymDenotations.scala:2451)
+	at dotty.tools.dotc.core.SymDenotations$ClassDenotation.membersNamed(SymDenotations.scala:2010)
+	at dotty.tools.dotc.core.SymDenotations$ClassDenotation.findMember(SymDenotations.scala:2061)
+	at dotty.tools.dotc.core.Types$Type.go$1(Types.scala:683)
+	at dotty.tools.dotc.core.Types$Type.goThis$1(Types.scala:808)
+	at dotty.tools.dotc.core.Types$Type.go$1(Types.scala:700)
+	at dotty.tools.dotc.core.Types$Type.findMember(Types.scala:876)
+	at dotty.tools.dotc.core.Types$Type.memberBasedOnFlags(Types.scala:666)
+	at dotty.tools.dotc.core.Types$Type.member(Types.scala:650)
+	at dotty.tools.dotc.core.Types$Type.allMembers$$anonfun$1(Types.scala:1017)
+	at scala.runtime.function.JProcedure2.apply(JProcedure2.java:15)
+	at scala.runtime.function.JProcedure2.apply(JProcedure2.java:10)
+	at dotty.tools.dotc.core.Types$Type.memberDenots$$anonfun$1(Types.scala:922)
+	at scala.runtime.function.JProcedure1.apply(JProcedure1.java:15)
+	at scala.runtime.function.JProcedure1.apply(JProcedure1.java:10)
+	at scala.collection.immutable.HashSet.foreach(HashSet.scala:937)
+	at dotty.tools.dotc.core.Types$Type.memberDenots(Types.scala:922)
+	at dotty.tools.dotc.core.Types$Type.allMembers(Types.scala:1017)
+	at scala.meta.internal.pc.IndexedContext$.accesibleMembers$1(IndexedContext.scala:134)
+	at scala.meta.internal.pc.IndexedContext$.scala$meta$internal$pc$IndexedContext$$$extractNames(IndexedContext.scala:192)
+	at scala.meta.internal.pc.IndexedContext$LazyWrapper.<init>(IndexedContext.scala:84)
+	at scala.meta.internal.pc.IndexedContext$.apply(IndexedContext.scala:72)
+	at scala.meta.internal.pc.IndexedContext$LazyWrapper.<init>(IndexedContext.scala:83)
+	at scala.meta.internal.pc.IndexedContext$.apply(IndexedContext.scala:72)
+	at scala.meta.internal.pc.IndexedContext$LazyWrapper.<init>(IndexedContext.scala:83)
+	at scala.meta.internal.pc.IndexedContext$.apply(IndexedContext.scala:72)
+	at scala.meta.internal.pc.IndexedContext$LazyWrapper.<init>(IndexedContext.scala:83)
+	at scala.meta.internal.pc.IndexedContext$.apply(IndexedContext.scala:72)
+	at scala.meta.internal.pc.IndexedContext$LazyWrapper.<init>(IndexedContext.scala:83)
+	at scala.meta.internal.pc.IndexedContext$.apply(IndexedContext.scala:72)
+	at scala.meta.internal.pc.IndexedContext$LazyWrapper.<init>(IndexedContext.scala:83)
+	at scala.meta.internal.pc.IndexedContext$.apply(IndexedContext.scala:72)
+	at scala.meta.internal.pc.IndexedContext$LazyWrapper.<init>(IndexedContext.scala:83)
+	at scala.meta.internal.pc.IndexedContext$.apply(IndexedContext.scala:72)
+	at scala.meta.internal.pc.IndexedContext$LazyWrapper.<init>(IndexedContext.scala:83)
+	at scala.meta.internal.pc.IndexedContext$.apply(IndexedContext.scala:72)
+	at scala.meta.internal.pc.PcDefinitionProvider.definitions(PcDefinitionProvider.scala:50)
+
+2022.08.26 20:42:54 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:46:33 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\build.sbt
+2022.08.26 20:46:36 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.26 20:46:46 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:47:19 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:47:41 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:47:48 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:47:56 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:50:43 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment2\Main.scala
+2022.08.26 20:50:48 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.26 20:50:54 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.26 20:51:12 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.26 20:51:17 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+Aug 26, 2022 8:51:17 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 15653
+2022.08.26 20:51:17 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment1\src\main\scala\main.scala
+2022.08.26 20:51:41 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:51:48 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:51:50 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:52:14 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:52:38 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 20:53:00 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:01:48 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:01:54 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:02:00 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:02:32 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:02:39 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:02:51 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:03:21 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:03:52 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:03:55 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:05:00 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:05:02 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:05:16 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:05:22 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:06:47 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:06:53 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:06:58 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:07:09 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:07:17 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:07:22 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:07:31 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:07:39 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:07:45 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:07:50 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:07:58 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+Aug 26, 2022 9:07:59 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 16627
+2022.08.26 21:08:50 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:09:00 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:09:02 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:09:32 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:09:42 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:09:47 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:09:54 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:10:05 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:10:15 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:10:53 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:11:15 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:11:30 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:11:42 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:11:53 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:12:36 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:13:39 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:13:57 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:14:08 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+Aug 26, 2022 9:14:30 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 17601
+2022.08.26 21:14:39 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:14:47 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:15:06 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:15:13 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+Aug 26, 2022 9:15:23 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 17704
+2022.08.26 21:15:29 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:16:54 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+Aug 26, 2022 9:17:16 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 17986
+2022.08.26 21:17:31 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:17:34 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:17:40 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:18:47 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:18:53 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:19:21 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:19:28 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:19:42 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:19:53 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:19:55 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 21:20:01 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala

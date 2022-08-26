@@ -3,7 +3,7 @@
     Logger.printMessage("message")
     Logger.printMessage("message")
     val list = List(1, 2, 3, 4, 5, 5)
-    val uniqueList = uniqueList(test)
+    val newList = uniqueList(list)
     val translated = translateToEnglish("Hadet")
 }
 
@@ -28,8 +28,7 @@ object Logger {
     var count = 1;
 
     def printMessage(message: String) : Unit = {
-        println("This is the log from the " + numToOrdinal(count) + " line")
-        println(message)
+        println("(" + numToOrdinal(count) + ")" + " " + message)
         count += 1
     }
 
