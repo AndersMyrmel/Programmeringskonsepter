@@ -70,5 +70,3 @@ object Calculator {
 // can be used in multiplication. E.g. true*4 should be equal to 4.
 // False*9 should be equal to 0.
 implicit def boolToInt(x : Boolean) : Int = if (x) 1 else 0
-
-
