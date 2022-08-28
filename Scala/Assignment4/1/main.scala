@@ -37,10 +37,10 @@ object Logger {
 
     def numToOrdinal(num: Int) : String = {
     num %100 match
-        case 1 => (return num.toString() + "st")
-        case 2 => (return num.toString() + "nd")
-        case 3 => (return num.toString() + "rd")
-        case _ => return(num.toString() + "th")
+        case 1 => return (num.toString() + "st")
+        case 2 => return (num.toString() + "nd")
+        case 3 => return (num.toString() + "rd")
+        case _ => return (num.toString() + "th")
     }
 }
 
