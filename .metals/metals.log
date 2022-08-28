@@ -6745,3 +6745,10 @@ Aug 26, 2022 10:33:50 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancella
 WARNING: Unmatched cancel notification for request id 20421
 2022.08.26 22:33:55 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
 2022.08.26 22:34:22 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 22:35:28 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 22:35:47 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 22:36:07 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 22:36:23 WARN  no build target for: C:\Users\Anders\Programmeringskonsepter\Scala\Assignment4\main.scala
+2022.08.26 22:47:22 INFO  shutting down Metals
+2022.08.28 16:29:14 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\Anders\Programmeringskonsepter\.metals\lsp.trace.json or C:\Users\Anders\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.08.28 16:29:16 INFO  logging to file C:\Users\Anders\Programmeringskonsepter\.metals\metals.log
