@@ -14,6 +14,7 @@ import scala.io.Source
     var puzzle = readPuzzle(fileName, size); // Index (i,j) = I x N + J    N = Size
     val constraints = getConstraints(fileName, size);
     printPuzzle(puzzle, size)
+    println()
     isLegal(puzzle,constraints,size,3,0,1)
 }
 
@@ -28,7 +29,24 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
     if (puzzle(row*size+col) != 0) {
         return false;
     }
-    println(puzzle(row*size+col)) //Index (i,j) = I x N + J    N = Size
+
+    val newRow = puzzle.slice(row*size, row*size+4)
+    val newCol = for { (x,i) <- puzzle.zipWithIndex if i == (col) || i == (col+size) || i == (col+size*2) || i == (col+size*3)} yield x
+    
+    if (newRow.contains(number) || newCol.contains(number)){
+        return false;
+    }
+
+    // Alternativ metode
+    //for (i<-Range(0, size)){
+    //    if(puzzle(i*size+col) == number || puzzle(i*size+col) == number){
+    //        println("false")
+    //        return false;
+    //    }
+    //}
+    
+    //println(puzzle(row*size+col)) //Index (i,j) = I x N + J    N = Size
+    //println(constraints(row*size+col))
     return false;
 }
 
