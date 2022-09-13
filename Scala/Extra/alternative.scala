@@ -16,7 +16,6 @@ import scala.io.Source
     printPuzzle(puzzle, size)
 }
 
-// Solve puzzle
 def solvePuzzle(puzzle: Array[Int], constraints: Array[Int], size: Int) : Boolean = {
     val firstEmptySquare = puzzle.indexOf(0) // Find the first empty square in puzzle
     if (firstEmptySquare == -1) {
@@ -42,7 +41,7 @@ def solvePuzzle(puzzle: Array[Int], constraints: Array[Int], size: Int) : Boolea
     return false; 
 }
 
-// Check wheter it is legal to assign a particular number to a given box on the grid
+// Check wheter it is legal to assign a particular number to a given square on the grid
 def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, col: Int, number: Int) : Boolean = {
     val sameRow = puzzle.slice(row*size, row*size+size)
     val sameCol = puzzle.slice(col, puzzle.size).zipWithIndex.collect{case (x,i) if (i) % size == 0 => x}
@@ -91,10 +90,8 @@ def readPuzzle(fileName : String, size: Int) : Array[Int] = {
 }
 
 // Store constraints in a seperate array
-// 1 = Box is less than box to the left (>)
-// 2 = Box is greater than box to the left (<)
-// 4 = Box is greater than box above (A)
-// 8 = Box is less than box above (V)
+// 1 = less than (>), 2 = greater than (<) square to the left
+// 4 = less than (A), 8 = greater than (V) square above
 def getConstraints(fileName : String, size: Int) : Array[Int] = {
     val size = getSize(fileName);
     val puzzle = Array.ofDim[Int](size*size);
@@ -132,7 +129,7 @@ def getConstraints(fileName : String, size: Int) : Array[Int] = {
     return puzzle;
 }
 
-// Get the width and height of a puzzle
+// Get the width and height of puzzle
 def getSize(fileName : String) : Int = {
     for (line <- Source.fromFile(fileName).getLines){
          if (line contains "size"){
@@ -142,7 +139,6 @@ def getSize(fileName : String) : Int = {
     return -1;
 }
 
-// Display puzzle in terminal
 def printPuzzle(puzzle: Array[Int], size: Int) : Unit = {
     var count = 0;
     for (i <- puzzle){
