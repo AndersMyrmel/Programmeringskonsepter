@@ -89,7 +89,7 @@ def readPuzzle(fileName : String, size: Int) : Array[Int] = {
     return puzzle;
 }
 
-// Store constraints in a seperate array
+// Store constraints in a separate array
 // 1 = less than (>), 2 = greater than (<) square to the left
 // 4 = less than (A), 8 = greater than (V) square above
 def getConstraints(fileName : String, size: Int) : Array[Int] = {
