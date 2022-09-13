@@ -5,9 +5,6 @@ import scala.io.Source
 // • Make a function that “solves” each puzzle by simply replacing each empty square by a random number between 1 and puzzle size.
 // • Create a output file using the above solution(s)
 
-
-// https://www.chegg.com/homework-help/questions-and-answers/program-solve-futoshiki-puzzle-grid-based-logic-puzzle-japan-also-known-unequal-learning-o-q32009377
-
 @main def run() = {
     val fileName = "./Scala/Extra/Unequal.txt";
     val size = getSize(fileName)
