@@ -41,7 +41,7 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
 
     // Alternativ metode for col og row
     //for (i<-Range(0, size)){
-    //    if(puzzle(i*size+col) == number || puzzle(i*size+col) == number){
+    //    if(puzzle(i*size+col) == number || puzzle(row*size+i) == number){
     //        return false;
     //    }
     //}
