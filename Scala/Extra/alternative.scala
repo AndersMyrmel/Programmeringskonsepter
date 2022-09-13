@@ -12,9 +12,8 @@ import scala.io.Source
     val constraints = getConstraints(fileName, size);
     printPuzzle(puzzle, size)
     println()
-    val res = solvePuzzle(puzzle, constraints, size)
+    solvePuzzle(puzzle, constraints, size)
     printPuzzle(puzzle, size)
-    println(res)
 }
 
 // Solve puzzle
