@@ -15,9 +15,7 @@ import scala.io.Source
     val constraints = getConstraints(fileName, size);
     printPuzzle(puzzle, size)
     println()
-    printPuzzle(constraints, size)
-    val legal = isLegal(puzzle,constraints,size,2,2,3)
-    println(legal)
+    val legal = isLegal(puzzle,constraints,size,0,1,3)
 }
 
 // Solve puzzle
@@ -32,9 +30,9 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
         return false;
     }
 
-    val sameRow = puzzle.slice(row*size, row*size+4)
-    val sameCol = for { (x,i) <- puzzle.zipWithIndex if i == (col) || i == (col+size) || i == (col+size*2) || i == (col+size*3)} yield x
-
+    val sameRow = puzzle.slice(row*size, row*size+size)
+    val sameCol = puzzle.slice(col, puzzle.size).zipWithIndex.collect{case (x,i) if (i) % size == 0 => x}
+    
     if (sameRow.contains(number) || sameCol.contains(number)){
         return false;
     }
