@@ -26,6 +26,7 @@ def solvePuzzle(puzzle: Array[Int], constraints: Array[Int]) : Boolean = {
 
 // Check wheter it is legal to assign a particular number to a given box on the grid
 def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, col: Int, number: Int) : Boolean = {
+    // Potentially delete this
     if (puzzle(row*size+col) != 0) {
         return false;
     }
