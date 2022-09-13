@@ -41,7 +41,6 @@ def solvePuzzle(puzzle: Array[Int], constraints: Array[Int], size: Int) : Boolea
         }
     }
     return false; 
-    
 }
 
 // Check wheter it is legal to assign a particular number to a given box on the grid
