@@ -14,9 +14,10 @@ import scala.io.Source
     var puzzle = readPuzzle(fileName, size); // Index (i,j) = I x N + J    N = Size
     val constraints = getConstraints(fileName, size);
     printPuzzle(puzzle, size)
+    isLegal(puzzle,constraints,size,3,0,1)
 }
 
-// Main solving function
+// Solve puzzle
 def solvePuzzle(puzzle: Array[Int], constraints: Array[Int]) : Boolean = {
     return false;
 
@@ -24,6 +25,10 @@ def solvePuzzle(puzzle: Array[Int], constraints: Array[Int]) : Boolean = {
 
 // Check wheter it is legal to assign a particular number to a given box on the grid
 def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, col: Int, number: Int) : Boolean = {
+    if (puzzle(row*size+col) != 0) {
+        return false;
+    }
+    println(puzzle(row*size+col)) //Index (i,j) = I x N + J    N = Size
     return false;
 }
 
