@@ -15,7 +15,9 @@ import scala.io.Source
     val constraints = getConstraints(fileName, size);
     printPuzzle(puzzle, size)
     println()
-    isLegal(puzzle,constraints,size,3,0,1)
+    printPuzzle(constraints, size)
+    val legal = isLegal(puzzle,constraints,size,2,2,3)
+    println(legal)
 }
 
 // Solve puzzle
@@ -30,24 +32,28 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
         return false;
     }
 
-    val newRow = puzzle.slice(row*size, row*size+4)
-    val newCol = for { (x,i) <- puzzle.zipWithIndex if i == (col) || i == (col+size) || i == (col+size*2) || i == (col+size*3)} yield x
-    
-    if (newRow.contains(number) || newCol.contains(number)){
+    val sameRow = puzzle.slice(row*size, row*size+4)
+    val sameCol = for { (x,i) <- puzzle.zipWithIndex if i == (col) || i == (col+size) || i == (col+size*2) || i == (col+size*3)} yield x
+
+    if (sameRow.contains(number) || sameCol.contains(number)){
         return false;
     }
+
+    constraints(row*size+col) match
+        case 1 => if number > puzzle(row*size+col-1) && puzzle(row*size+col-1) != 0 then return false;
+        case 2 => if number < puzzle(row*size+col-1) then return false;
+        case 4 => if number < puzzle(row*size+col-size) then return false;
+        case 8 => if number > puzzle(row*size+col-size) && puzzle(row*size+col-size) != 0 then return false;
+        case _ => return true;
 
     // Alternativ metode
     //for (i<-Range(0, size)){
     //    if(puzzle(i*size+col) == number || puzzle(i*size+col) == number){
-    //        println("false")
     //        return false;
     //    }
     //}
-    
-    //println(puzzle(row*size+col)) //Index (i,j) = I x N + J    N = Size
-    //println(constraints(row*size+col))
-    return false;
+
+    return true;
 }
 
 
