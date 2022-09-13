@@ -39,19 +39,19 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
         return false;
     }
 
+    // Alternativ metode for col og row
+    //for (i<-Range(0, size)){
+    //    if(puzzle(i*size+col) == number || puzzle(i*size+col) == number){
+    //        return false;
+    //    }
+    //}
+
     constraints(row*size+col) match
         case 1 => if number > puzzle(row*size+col-1) && puzzle(row*size+col-1) != 0 then return false;
         case 2 => if number < puzzle(row*size+col-1) then return false;
         case 4 => if number < puzzle(row*size+col-size) then return false;
         case 8 => if number > puzzle(row*size+col-size) && puzzle(row*size+col-size) != 0 then return false;
         case _ => return true;
-
-    // Alternativ metode
-    //for (i<-Range(0, size)){
-    //    if(puzzle(i*size+col) == number || puzzle(i*size+col) == number){
-    //        return false;
-    //    }
-    //}
 
     return true;
 }
