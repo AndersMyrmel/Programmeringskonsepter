@@ -15,7 +15,6 @@ import scala.io.Source
     val res = solvePuzzle(puzzle, constraints, size)
     printPuzzle(puzzle, size)
     println(res)
-    
 }
 
 // Solve puzzle
@@ -93,6 +92,7 @@ def readPuzzle(fileName : String, size: Int) : Array[Int] = {
     return puzzle;
 }
 
+// Store constraints in a seperate array
 // 1 = Box is less than box to the left (>)
 // 2 = Box is greater than box to the left (<)
 // 4 = Box is greater than box above (A)
