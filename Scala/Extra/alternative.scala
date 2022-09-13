@@ -15,7 +15,8 @@ import scala.io.Source
     val constraints = getConstraints(fileName, size);
     printPuzzle(puzzle, size)
     println()
-    val legal = isLegal(puzzle,constraints,size,0,1,3)
+    val legal = isLegal(puzzle,constraints,size,2,2,3)
+    println(legal)
 }
 
 // Solve puzzle
