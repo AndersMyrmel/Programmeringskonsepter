@@ -22,7 +22,6 @@ import scala.io.Source
 // Solve puzzle
 def solvePuzzle(puzzle: Array[Int], constraints: Array[Int]) : Boolean = {
     return false;
-
 }
 
 // Check wheter it is legal to assign a particular number to a given box on the grid
@@ -37,13 +36,6 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
     if (sameRow.contains(number) || sameCol.contains(number)){
         return false;
     }
-
-    // Alternativ metode for col og row
-    //for (i<-Range(0, size)){
-    //    if(puzzle(i*size+col) == number || puzzle(row*size+i) == number){
-    //        return false;
-    //    }
-    //}
 
     constraints(row*size+col) match
         case 1 => if number > puzzle(row*size+col-1) && puzzle(row*size+col-1) != 0 then return false;
@@ -60,7 +52,7 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
 def readPuzzle(fileName : String, size: Int) : Array[Int] = {
     val size = getSize(fileName);
     val puzzle = Array.ofDim[Int](size*size);
-    var twice = 0;
+    var skip = 0;
     var count = 0;
 
     for (line <- Source.fromFile(fileName).getLines.drop(2)){
@@ -73,10 +65,10 @@ def readPuzzle(fileName : String, size: Int) : Array[Int] = {
                 count += 1;
             }
             else if (i == '_' ) {
-                twice += 1;
-                if (twice == 2){
+                skip += 1;
+                if (skip == 2){
                     count += 1; 
-                    twice = 0;
+                    skip = 0;
                 }
             }
         }
@@ -84,8 +76,6 @@ def readPuzzle(fileName : String, size: Int) : Array[Int] = {
     return puzzle;
 }
 
-// Constraints are saved in a seperate array
-// For each box we store a value that encodes the relationship to the box to the left and below
 // 1 = Box is less than box to the left (>)
 // 2 = Box is greater than box to the left (<)
 // 4 = Box is greater than box above (A)
