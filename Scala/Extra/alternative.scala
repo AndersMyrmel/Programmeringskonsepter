@@ -113,46 +113,6 @@ def readConstraints(fileName : String, size: Int) : Array[Int] = {
 
 }
 
-// Store constraints in a separate array
-// 1 = less than (>), 2 = greater than (<) square to the left
-// 4 = less than (A), 8 = greater than (V) square above
-def getConstraints(fileName : String, size: Int) : Array[Int] = {
-    val size = getSize(fileName);
-    val puzzle = Array.ofDim[Int](size*size);
-    var twice = 0;
-    var count = 0;
-    for (line <- Source.fromFile(fileName).getLines.drop(2)){
-        if (line contains "size"){
-            return puzzle;
-        }
-         for (i <- line){
-            if (i.isDigit){
-                count += 1;
-            }
-            else if (i == '>'){
-                puzzle(count) = 1;
-            }
-            else if (i == '<'){
-                puzzle(count) = 2;
-            }
-            else if (i == 'A'){
-                puzzle(count) = 4;
-            }
-            else if (i == 'V'){
-                puzzle(count) = 8;
-            }
-            else if (i == '_' ) {
-                twice += 1;
-                if (twice == 2){
-                    count += 1; 
-                    twice = 0;
-                }
-            }
-        }
-    }
-    return puzzle;
-}
-
 // Get the width and height of puzzle
 def getSize(fileName : String) : Int = {
     for (line <- Source.fromFile(fileName).getLines){
