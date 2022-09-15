@@ -8,10 +8,13 @@ import scala.io.Source
 @main def run() = {
     val fileName = "./Scala/Extra/Unequal.txt";
     val size = getSize(fileName)
-    var puzzle = readPuzzle(fileName, size); // Index (i,j) = I x N + J    N = Size
+    val puzzle = parsePuzzles(fileName, size)
+    //printPuzzle(puzzle, size)
+    
+    //var puzzle = readPuzzle(fileName, size); // Index (i,j) = I x N + J    N = Size
     val constraints = getConstraints(fileName, size);
-    printPuzzle(puzzle, size)
-    println()
+    //printPuzzle(puzzle, size)
+    //println()
     solvePuzzle(puzzle, constraints, size)
     printPuzzle(puzzle, size)
 }
@@ -58,6 +61,26 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
         case _ => return true;
 
     return true;
+}
+
+// Read the next puzzle and store it in a one dimensional array
+def parsePuzzles(file: String, size: Int): Array[Int] = {
+    var puzzle = Array.ofDim[Int](size*size);
+    val intRegex = """(\d+)""".r
+    var count = 0;
+
+    for (line <- Source.fromFile(file).getLines.drop(2)){
+        if (line contains "size"){
+            return puzzle;
+        }
+        for (i <- line){
+            i match 
+                case intRegex(i) => {count += 1; puzzle((count/2)) = i.toInt - 48; count += 1};
+                case '_' => count += 1
+                case _ => 
+            }
+        }
+    return puzzle;
 }
 
 
@@ -142,8 +165,7 @@ def getSize(fileName : String) : Int = {
 def printPuzzle(puzzle: Array[Int], size: Int) : Unit = {
     var count = 0;
     for (i <- puzzle){
-        print(puzzle(count))
-        print(" ")
+        print(s"${puzzle(count)} ")
         count += 1
         if (count % size == 0){
             println()
