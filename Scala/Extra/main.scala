@@ -44,21 +44,10 @@ def solvePuzzle(puzzle : Array[Array[Cell]]) : Array[Array[Cell]] = {
     var row, col = 0;
     var check = true;
     var number = Random.nextInt(4);
-
-    //val column = getColumn(1, puzzle);
-//
-    //printColumn(column)
-//
-    //while(row < puzzle.length){
-    //    print(puzzle(row)(col).number);
-    //    row += 1;
-    //}
     
     while(row < puzzle.length){
-        
         while(col < puzzle(row).length){
             val column = getColumn(row, puzzle);
-
             if (puzzle(row)(col).number == 0){
                 while (check == true){
                     if (puzzle(row).exists(y => (y.number == number)) || column.contains(x => (x.number == number))){
@@ -70,16 +59,6 @@ def solvePuzzle(puzzle : Array[Array[Cell]]) : Array[Array[Cell]] = {
                         check = false;
                     }
                 }
-            
-                
-
-
-
-                //while (puzzle(row).exists(y => (y.number == number)) && column.exists(y =>(y.number == number))) {
-                //    number = Random.between(1, 5);
-                //    println(number)
-                //    }
-                //    puzzle(row)(col).setNumber(number)
             }
             col += 1;
             check = true;
