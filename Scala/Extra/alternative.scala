@@ -8,11 +8,14 @@ import scala.io.Source
 @main def run() = {
     val fileName = "./Scala/Extra/Unequal.txt";
     val size = getSize(fileName)
-    val puzzle = parsePuzzles(fileName, size)
-    //printPuzzle(puzzle, size)
+    val puzzle = readPuzzle(fileName, size)
+    
+
+    val constraints = getConstraints(fileName, size)
+    
     
     //var puzzle = readPuzzle(fileName, size); // Index (i,j) = I x N + J    N = Size
-    val constraints = getConstraints(fileName, size);
+    //val constraints = getConstraints(fileName, size);
     //printPuzzle(puzzle, size)
     //println()
     solvePuzzle(puzzle, constraints, size)
@@ -64,7 +67,7 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
 }
 
 // Read the next puzzle and store it in a one dimensional array
-def parsePuzzles(file: String, size: Int): Array[Int] = {
+def readPuzzle(file: String, size: Int): Array[Int] = {
     var puzzle = Array.ofDim[Int](size*size);
     val intRegex = """(\d+)""".r
     var count = 0;
@@ -75,7 +78,7 @@ def parsePuzzles(file: String, size: Int): Array[Int] = {
         }
         for (i <- line){
             i match 
-                case intRegex(i) => {count += 1; puzzle((count/2)) = i.toInt - 48; count += 1};
+                case intRegex(i) => {count += 1; puzzle(count/2) = i.toInt - 48; count += 1;}
                 case '_' => count += 1
                 case _ => 
             }
@@ -83,33 +86,31 @@ def parsePuzzles(file: String, size: Int): Array[Int] = {
     return puzzle;
 }
 
-
-// Read the puzzle and store it in a one dimensional array
-def readPuzzle(fileName : String, size: Int) : Array[Int] = {
-    val size = getSize(fileName);
-    val puzzle = Array.ofDim[Int](size*size);
-    var skip = 0;
+// Store constraints in a separate array
+// 1 = less than (>), 2 = greater than (<) square to the left
+// 4 = less than (A), 8 = greater than (V) square above
+def readConstraints(fileName : String, size: Int) : Array[Int] = {
+    var constraints = Array.ofDim[Int](size*size);
+    val intRegex = """(\d+)""".r
     var count = 0;
 
     for (line <- Source.fromFile(fileName).getLines.drop(2)){
         if (line contains "size"){
-            return puzzle;
+            return constraints;
         }
-         for (i <- line){
-            if (i.isDigit){
-                puzzle(count) = i.toInt - 48;
-                count += 1;
-            }
-            else if (i == '_' ) {
-                skip += 1;
-                if (skip == 2){
-                    count += 1; 
-                    skip = 0;
-                }
+        for (i <- line){
+            i match 
+                case intRegex(i) => count += 1;
+                case '>' => constraints(count/2) = 1
+                case '<' => constraints(count/2) = 2
+                case 'A' => constraints(count/2) = 4
+                case 'V' => constraints(count/2) = 8
+                case '_' => count += 1
+                case _ => 
             }
         }
-    }
-    return puzzle;
+    return constraints;
+
 }
 
 // Store constraints in a separate array
