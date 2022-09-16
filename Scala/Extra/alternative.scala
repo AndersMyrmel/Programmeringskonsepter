@@ -1,4 +1,5 @@
 import scala.io.Source
+import scala.collection.mutable.ArrayBuffer
 
 // Create a puzzle input file, as shown in Canvas (Pages/Description: Unequal)
 // • Read the file, print out the number of puzzles and their sizes
@@ -8,13 +9,13 @@ import scala.io.Source
 @main def run() = {
     val fileName = "./Scala/Extra/Unequal.txt";
     val size = getSize(fileName)
-    val puzzle = readPuzzle(fileName, size) 
-    //val constraints = readConstraints(fileName,size)
+    val puzzle = readPuzzle(fileName) 
+    val constraints = readConstraints(fileName,size)
     //solvePuzzle(puzzle, constraints, size)
     printPuzzle(puzzle, size)
 }
 
-def solvePuzzle(puzzle: Array[Int], constraints: Array[Int], size: Int) : Boolean = {
+def solvePuzzle(puzzle: ArrayBuffer[Int], constraints: ArrayBuffer[Int], size: Int) : Boolean = {
     val firstEmptySquare = puzzle.indexOf(0) // Find the first empty square in puzzle
     if (firstEmptySquare == -1) {
         return true; // If no empty squares exist the puzzle is solved
@@ -40,7 +41,7 @@ def solvePuzzle(puzzle: Array[Int], constraints: Array[Int], size: Int) : Boolea
 }
 
 // Check wheter it is legal to assign a particular number to a given square on the grid
-def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, col: Int, number: Int) : Boolean = {
+def isLegal(puzzle: ArrayBuffer[Int], constraints: ArrayBuffer[Int], size: Int, row: Int, col: Int, number: Int) : Boolean = {
     val sameRow = puzzle.slice(row*size, row*size+size)
     val sameCol = puzzle.slice(col, puzzle.size).zipWithIndex.collect{case (x,i) if (i) % size == 0 => x}
     
@@ -58,25 +59,26 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
     return true;
 }
 
+
 // Read the next puzzle and store it in a one dimensional array
 // Index (i,j) = I x N + J    N = Size
-def readPuzzle(file: String, size: Int): Array[Int] = {
-    var puzzle = Array.ofDim[Int](size*size);
-    val intRegex = """(\d+)""".r
-    val twoDigitRegex = """/^\d{2}$/""".r
-    var count = 0;
+def readPuzzle(file: String): ArrayBuffer[Int] = {
+    var puzzle = new ArrayBuffer[Int]
+    var lines = Source.fromFile(file).getLines()
+    var amount = lines.next().split(" ")(1).toInt
+    var size = lines.next().split(" ")(1).split("x").map(_.toInt)
 
-    for (line <- Source.fromFile(file).getLines.drop(2)){
-        if (line contains "size"){
-            return puzzle;
+    for (line <- lines.take(size(1) * 2 - 1)) {
+      for (i <- 0 to size(0) - 1) {
+        var value = line.slice(i * 3, i * 3 + 2)
+        value match {
+            case " A" => 
+            case " V" => 
+            case "  " => 
+            case "__" => puzzle += 0
+            case _ => puzzle+= value.trim().toInt
         }
-        for (i <- line){
-            i.toString match 
-                case twoDigitRegex(i) => {count += 1; puzzle((count/2)) = i.toInt; }
-                case intRegex(i) => {count += 1; puzzle((count/2)) = i.toInt; count += 1;}
-                case "_" => count += 1
-                case _ => 
-        }
+      }
     }
     return puzzle;
 }
@@ -84,26 +86,33 @@ def readPuzzle(file: String, size: Int): Array[Int] = {
 // Store constraints in a separate array
 // 1 = less than (>), 2 = greater than (<) square to the left
 // 4 = less than (A), 8 = greater than (V) square above
-def readConstraints(fileName : String, size: Int) : Array[Int] = {
-    var constraints = Array.ofDim[Int](size*size);
+def readConstraints(file : String, size: Int) : ArrayBuffer[Int] = {
+    var constraints = new ArrayBuffer[Int]
+    var lines = Source.fromFile(file).getLines()
+    var amount = lines.next().split(" ")(1).toInt
     val intRegex = """(\d+)""".r
     var count = 0;
+    var size = lines.next().split(" ")(1).split("x").map(_.toInt)
 
-    for (line <- Source.fromFile(fileName).getLines.drop(2)){
-        if (line contains "size"){
-            return constraints;
+    for (line <- lines.take(size(1) * 2 - 1)) {
+        for (i <- 0 to size(0) - 1) {
+            var value = line.slice(i * 3, i * 3 + 2)
+            value match {
+                case " A" => constraints += 4
+                case " V" => constraints += 8
+                case " " =>
+                case "  " => 
+                case "__" => constraints += 0
+                case _ => constraints += 0
+            }
+            line.slice(i * 3 + 2, i * 3 + 3) match {
+                case ">" => constraints += 1
+                case "<" => constraints += 2
+                case _ =>
+            }
+            
         }
-        for (i <- line){
-            i match 
-                case intRegex(i) => count += 2;
-                case '>' => constraints(count/2) = 1
-                case '<' => constraints(count/2) = 2
-                case 'A' => constraints(count/2) = 4
-                case 'V' => constraints(count/2) = 8
-                case '_' => count += 1
-                case _ => 
-        }
-    }
+    }  
     return constraints;
 }
 
@@ -115,7 +124,7 @@ def getSize(fileName : String) : Int = {
     return size(0)
 }
 
-def printPuzzle(puzzle: Array[Int], size: Int) : Unit = {
+def printPuzzle(puzzle: ArrayBuffer[Int], size: Int) : Unit = {
     var count = 0;
     for (i <- puzzle){
         print(s"${puzzle(count)} ")
