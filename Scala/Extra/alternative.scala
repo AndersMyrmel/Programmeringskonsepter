@@ -9,8 +9,8 @@ import scala.io.Source
     val fileName = "./Scala/Extra/Unequal.txt";
     val size = getSize(fileName)
     val puzzle = readPuzzle(fileName, size) 
-    val constraints = readConstraints(fileName,size)
-    solvePuzzle(puzzle, constraints, size)
+    //val constraints = readConstraints(fileName,size)
+    //solvePuzzle(puzzle, constraints, size)
     printPuzzle(puzzle, size)
 }
 
@@ -63,6 +63,7 @@ def isLegal(puzzle: Array[Int], constraints: Array[Int], size: Int, row: Int, co
 def readPuzzle(file: String, size: Int): Array[Int] = {
     var puzzle = Array.ofDim[Int](size*size);
     val intRegex = """(\d+)""".r
+    val twoDigitRegex = """/^\d{2}$/""".r
     var count = 0;
 
     for (line <- Source.fromFile(file).getLines.drop(2)){
@@ -70,9 +71,10 @@ def readPuzzle(file: String, size: Int): Array[Int] = {
             return puzzle;
         }
         for (i <- line){
-            i match 
-                case intRegex(i) => {count += 1; puzzle(count/2) = i.toInt - 48; count += 1;}
-                case '_' => count += 1
+            i.toString match 
+                case twoDigitRegex(i) => {count += 1; puzzle((count/2)) = i.toInt; }
+                case intRegex(i) => {count += 1; puzzle((count/2)) = i.toInt; count += 1;}
+                case "_" => count += 1
                 case _ => 
         }
     }
@@ -93,7 +95,7 @@ def readConstraints(fileName : String, size: Int) : Array[Int] = {
         }
         for (i <- line){
             i match 
-                case intRegex(i) => count += 1;
+                case intRegex(i) => count += 2;
                 case '>' => constraints(count/2) = 1
                 case '<' => constraints(count/2) = 2
                 case 'A' => constraints(count/2) = 4
@@ -107,12 +109,10 @@ def readConstraints(fileName : String, size: Int) : Array[Int] = {
 
 // Get the width and height of puzzle
 def getSize(fileName : String) : Int = {
-    for (line <- Source.fromFile(fileName).getLines){
-         if (line contains "size"){
-            return (line(line.length - 1).toInt - 48);
-        }
-    }
-    return -1;
+    val lines = Source.fromFile(fileName).getLines()
+    val amount = lines.next().split(" ")(1).toInt
+    val size = lines.next().split(" ")(1).split("x").map(_.toInt)
+    return size(0)
 }
 
 def printPuzzle(puzzle: Array[Int], size: Int) : Unit = {
