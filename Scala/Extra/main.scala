@@ -85,7 +85,7 @@ def solvePuzzle(puzzle: Puzzle) : Boolean = {
                 return true;
             }
             else {
-                puzzle.board(row)(col) = Missing // Erase number and backtrack
+                puzzle.board(row)(col) = Missing; // Erase number and backtrack
             }
         }
     }
@@ -100,82 +100,15 @@ def isLegal(puzzle: Puzzle, row: Int, col: Int, num: Number) : Boolean = {
         return false;
     }
 
-    val test = checkPuzzle(puzzle, row, col, num)
-    return test
-
-
-
-    //val (newRow, newCol) = (row,col) + moves(i)
-    val previousRow = row -1
-    val previousCol = col -1
-    val nextRow = row + 1
-    val nextCol = col + 1
-
-    // check west
-    //if (0 <= previousCol && previousCol < puzzle.board(0).length) {
-    //  if puzzle.board(row)(previousCol) == Left && getNumber(puzzle.board(row)(previousCol-1)) != 0 then return (num.number > getNumber(puzzle.board(row)(previousCol-1)));
-    //  if puzzle.board(row)(previousCol) == Right then return (num.number < getNumber(puzzle.board(row)(previousCol-1)))
-    //}
-    
-    
-    // check north
-    //if (0 <= previousRow && previousRow < puzzle.board(0).length){
-    //  puzzle.board(previousRow)(col) match
-    //    case Down => if getNumber(puzzle.board(previousRow-1)(col)) != 0 then return (num.number < getNumber(puzzle.board(previousRow-1)(col)))
-    //    case Up => return (num.number > getNumber(puzzle.board(previousRow-1)(col)))
-    //    case _ =>
-    //} 
-//
-    //// check west
-    //if (0 <= previousCol && previousCol < puzzle.board(0).length) {
-    //  puzzle.board(row)(previousCol) match
-    //    case Left => if getNumber(puzzle.board(row)(previousCol-1)) != 0 then return (num.number > getNumber(puzzle.board(row)(previousCol-1)))
-    //    case Right => return (num.number < getNumber(puzzle.board(row)(previousCol-1)))
-    //    case _ =>
-    //}
-//
-    //// check east
-    //if (0 <= nextCol && nextCol < puzzle.board(0).length) {
-    //  puzzle.board(row)(nextCol) match
-    //    case Left => if getNumber(puzzle.board(row)(nextCol+1)) != 0 then return (num.number < getNumber(puzzle.board(row)(nextCol+1)))
-    //    case Right => return (num.number > getNumber(puzzle.board(row)(nextCol+1)))
-    //    case _ => 
-    //}
-//
-    // check south
-    //if (0 <= nextRow && nextRow < puzzle.board(0).length){
-    //  puzzle.board(nextRow)(col) match
-    //    case Down => return (num.number > getNumber(puzzle.board(nextRow+1)(col)))
-    //    case Up => if getNumber(puzzle.board(nextRow+1)(col)) != 0 then return (num.number < getNumber(puzzle.board(nextRow+1)(col)))
-    //    case _ =>
-    //}
-
-    
-    
-    // check east
-    //if (0 <= nextCol && nextCol < puzzle.board(0).length) {
-    //  if puzzle.board(row)(nextCol) == Left && getNumber(puzzle.board(row)(nextCol+1)) != 0 then return (num.number < getNumber(puzzle.board(row)(nextCol+1)));
-    //  if puzzle.board(row)(nextCol) == Right then return (num.number > getNumber(puzzle.board(row)(nextCol+1)))
-    //}
-    return true;
+    return checkNeighbours(puzzle, row, col, num)
 }
 
-def checkPuzzle(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolean = {
-  val previousRow = row -1
-  val previousCol = col -1
-  val nextRow = row + 1
-  val nextCol = col + 1
-  var south,east,west,north = true
-
-
-
-  // check south
-  if (0 <= nextRow && nextRow < puzzle.board(0).length){
-    puzzle.board(nextRow)(col) match
-      case Down => south = (num.number > getNumber(puzzle.board(nextRow+1)(col)))
-      case Up => if getNumber(puzzle.board(nextRow+1)(col)) != 0 then south = (num.number < getNumber(puzzle.board(nextRow+1)(col)))
-      case _ =>
-  }
+def checkNeighbours(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolean = {
+  val previousRow = row -1;
+  val previousCol = col -1;
+  val nextRow = row + 1;
+  val nextCol = col + 1;
+  var north,south,east,west = true;
 
   // check north
   if (0 <= previousRow && previousRow < puzzle.board(0).length){
@@ -185,6 +118,13 @@ def checkPuzzle(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolean = 
       case _ =>
   } 
 
+  // check south
+  if (0 <= nextRow && nextRow < puzzle.board(0).length){
+    puzzle.board(nextRow)(col) match
+      case Down => south = (num.number > getNumber(puzzle.board(nextRow+1)(col)))
+      case Up => if getNumber(puzzle.board(nextRow+1)(col)) != 0 then south = (num.number < getNumber(puzzle.board(nextRow+1)(col)))
+      case _ =>
+  }
   
   // check east
   if (0 <= nextCol && nextCol < puzzle.board(0).length) {
@@ -202,15 +142,7 @@ def checkPuzzle(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolean = 
       case _ =>
   }
 
-  if (north == false || south == false || east == false || west == false){
-    return false
-  } else{
-    return true
-  }
-}
-
-implicit class TuppleAdd(t: (Int, Int)) {
-  def +(p: (Int, Int)) = (p._1 + t._1, p._2 + t._2)
+  return !List(north,south,east,west).contains(false)
 }
 
 def findFirstElement(puzzle: Puzzle): (Int, Int) = {
@@ -252,14 +184,11 @@ def getSize(fileName : String) : Int = {
 
 @main def run() = {
     val filename = "./Scala/Extra/Unequal.txt"
+    val t1 = System.nanoTime
     val puzzles = parsePuzzles(filename)
-    var puzzle1 = puzzles(1)
-    //println(puzzle1.board(0)(14))
-    //val res = isLegal(puzzle1,0,14,Number(8))
-    //println(res)
+    var puzzle1 = puzzles(0)
     val res = solvePuzzle(puzzle1)
-
     println(puzzle1)
-    print(puzzle1.board(3)(6))
-    
+    val duration = (System.nanoTime - t1) / 1e9d
+    println(duration)
 }
