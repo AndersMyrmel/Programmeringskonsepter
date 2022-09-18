@@ -77,12 +77,8 @@ def solvePuzzle(puzzle: Puzzle) : Boolean = {
 
     val (row, col) = firstEmptySquare
 
-    
-   
-
     for (number <- 1 to Math.ceil(puzzle.board(0).length / 2.0).toInt){
         val legalMove = isLegal(puzzle, row, col, Number(number))
-        
         if (legalMove) {
             puzzle.board(row)(col) = Number(number)
             if (solvePuzzle(puzzle)) {
@@ -104,89 +100,113 @@ def isLegal(puzzle: Puzzle, row: Int, col: Int, num: Number) : Boolean = {
         return false;
     }
 
-    val moves = List((1,0),(0,1))   
+    val test = checkPuzzle(puzzle, row, col, num)
+    return test
 
 
 
-      //val (newRow, newCol) = (row,col) + moves(i)
+    //val (newRow, newCol) = (row,col) + moves(i)
     val previousRow = row -1
     val previousCol = col -1
     val nextRow = row + 1
     val nextCol = col + 1
 
-    if (0 <= nextRow && nextRow < puzzle.board(0).length) {
-      if (puzzle.board(nextRow)(col) == Up){
-        if (getNumber(puzzle.board(nextRow+1)(col)) != 0){
-          return (num.number < getNumber(puzzle.board(nextRow+1)(col)))
-        } else{
-          return true
-        }
-      }
-    }
-
-    
-    if (0 <= previousCol && previousCol < puzzle.board(0).length) {
-      if puzzle.board(row)(previousCol) == Left && getNumber(puzzle.board(row)(previousCol-1)) != 0 then return (num.number > getNumber(puzzle.board(row)(previousCol-1)));
-      if puzzle.board(row)(previousCol) == Right then return (num.number < getNumber(puzzle.board(row)(previousCol-1)))
-
-    }
-    
-    if (0 <= previousRow && previousRow < puzzle.board(0).length){
-      if puzzle.board(previousRow)(col) == Down && getNumber(puzzle.board(previousRow - 1)(col)) != 0 then return (num.number < getNumber(puzzle.board(previousRow-1)(col)))
-      //if puzzle.board(previousRow)(col) == Up then return (num.number > getNumber(puzzle.board(previousRow-1)(col)))
-    }
-
-    
-
-    
-
-
-    
-  
-    
-
-
-
-    //if (puzzle.board(row)(col+1) == Left) {
-    //  print(getNumber(puzzle.board(row)(col+2)))
-    //  print(num.number < getNumber(puzzle.board(row)(col+2)))
-    //  return num.number < getNumber(puzzle.board(row)(col+2))
-    //} else {
-    //  return true;
-    //}
-
-    //try {
-    //  if (puzzle.board(row)(col+1) == Left) {return num.number < getNumber(puzzle.board(row)(col+2))}
-    //  //else if (puzzle.board(row)(col+1) == Right) {return num.number > getNumber(puzzle.board(row)(col+2))}
-    //  else return true
-    //} catch {
-    //  case e: ArrayIndexOutOfBoundsException => 
+    // check west
+    //if (0 <= previousCol && previousCol < puzzle.board(0).length) {
+    //  if puzzle.board(row)(previousCol) == Left && getNumber(puzzle.board(row)(previousCol-1)) != 0 then return (num.number > getNumber(puzzle.board(row)(previousCol-1)));
+    //  if puzzle.board(row)(previousCol) == Right then return (num.number < getNumber(puzzle.board(row)(previousCol-1)))
     //}
     
     
-
-
-
-    
-
-    //if puzzle.board(row)(col+1) == Left then return (num.number<getNumber(puzzle.board(row)(col+2)));
-    //if puzzle.board(row)(col+1) == Right then return (num.number>getNumber(puzzle.board(row)(col+2)));
-    //if puzzle.board(row+1)(col) == Up then return (num.number>getNumber(puzzle.board(row+2)(col)));
-    //if puzzle.board(row+1)(col) == Down then return (num.number<getNumber(puzzle.board(row+2)(col)));
-    
-
-    
-    // find a better solution to this exception handling
-    //try {
-    //  if puzzle.board(row)(col+1) == Left && getNumber(puzzle.board(row)(col+2))!= 0  then return (num.number<getNumber(puzzle.board(row)(col+2)));
-    //  if puzzle.board(row)(col+1) == Right && getNumber(puzzle.board(row)(col+2))!= 0 then return (num.number>getNumber(puzzle.board(row)(col+2)));
-    //  if puzzle.board(row+1)(col) == Up && getNumber(puzzle.board(row+2)(col))!= 0 then return (num.number>getNumber(puzzle.board(row+2)(col)));
-    //  if puzzle.board(row+1)(col) == Down && getNumber(puzzle.board(row+2)(col)) != 0 then return (num.number<getNumber(puzzle.board(row+2)(col)));
-    //} catch {
-    //  case e: ArrayIndexOutOfBoundsException => 
+    // check north
+    //if (0 <= previousRow && previousRow < puzzle.board(0).length){
+    //  puzzle.board(previousRow)(col) match
+    //    case Down => if getNumber(puzzle.board(previousRow-1)(col)) != 0 then return (num.number < getNumber(puzzle.board(previousRow-1)(col)))
+    //    case Up => return (num.number > getNumber(puzzle.board(previousRow-1)(col)))
+    //    case _ =>
+    //} 
+//
+    //// check west
+    //if (0 <= previousCol && previousCol < puzzle.board(0).length) {
+    //  puzzle.board(row)(previousCol) match
+    //    case Left => if getNumber(puzzle.board(row)(previousCol-1)) != 0 then return (num.number > getNumber(puzzle.board(row)(previousCol-1)))
+    //    case Right => return (num.number < getNumber(puzzle.board(row)(previousCol-1)))
+    //    case _ =>
     //}
-  
+//
+    //// check east
+    //if (0 <= nextCol && nextCol < puzzle.board(0).length) {
+    //  puzzle.board(row)(nextCol) match
+    //    case Left => if getNumber(puzzle.board(row)(nextCol+1)) != 0 then return (num.number < getNumber(puzzle.board(row)(nextCol+1)))
+    //    case Right => return (num.number > getNumber(puzzle.board(row)(nextCol+1)))
+    //    case _ => 
+    //}
+//
+    // check south
+    //if (0 <= nextRow && nextRow < puzzle.board(0).length){
+    //  puzzle.board(nextRow)(col) match
+    //    case Down => return (num.number > getNumber(puzzle.board(nextRow+1)(col)))
+    //    case Up => if getNumber(puzzle.board(nextRow+1)(col)) != 0 then return (num.number < getNumber(puzzle.board(nextRow+1)(col)))
+    //    case _ =>
+    //}
+
+    
+    
+    // check east
+    //if (0 <= nextCol && nextCol < puzzle.board(0).length) {
+    //  if puzzle.board(row)(nextCol) == Left && getNumber(puzzle.board(row)(nextCol+1)) != 0 then return (num.number < getNumber(puzzle.board(row)(nextCol+1)));
+    //  if puzzle.board(row)(nextCol) == Right then return (num.number > getNumber(puzzle.board(row)(nextCol+1)))
+    //}
     return true;
+}
+
+def checkPuzzle(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolean = {
+  val previousRow = row -1
+  val previousCol = col -1
+  val nextRow = row + 1
+  val nextCol = col + 1
+  var south,east,west,north = true
+
+
+
+  // check south
+  if (0 <= nextRow && nextRow < puzzle.board(0).length){
+    puzzle.board(nextRow)(col) match
+      case Down => south = (num.number > getNumber(puzzle.board(nextRow+1)(col)))
+      case Up => if getNumber(puzzle.board(nextRow+1)(col)) != 0 then south = (num.number < getNumber(puzzle.board(nextRow+1)(col)))
+      case _ =>
+  }
+
+  // check north
+  if (0 <= previousRow && previousRow < puzzle.board(0).length){
+    puzzle.board(previousRow)(col) match
+      case Down => if getNumber(puzzle.board(previousRow-1)(col)) != 0 then north = (num.number < getNumber(puzzle.board(previousRow-1)(col)))
+      case Up => north = (num.number > getNumber(puzzle.board(previousRow-1)(col)))
+      case _ =>
+  } 
+
+  
+  // check east
+  if (0 <= nextCol && nextCol < puzzle.board(0).length) {
+    puzzle.board(row)(nextCol) match
+      case Left => if getNumber(puzzle.board(row)(nextCol+1)) != 0 then east = (num.number < getNumber(puzzle.board(row)(nextCol+1)))
+      case Right => east = (num.number > getNumber(puzzle.board(row)(nextCol+1)))
+      case _ => 
+  }
+
+  // check west
+  if (0 <= previousCol && previousCol < puzzle.board(0).length) {
+    puzzle.board(row)(previousCol) match
+      case Left => if getNumber(puzzle.board(row)(previousCol-1)) != 0 then west = (num.number > getNumber(puzzle.board(row)(previousCol-1)))
+      case Right => west = (num.number < getNumber(puzzle.board(row)(previousCol-1)))
+      case _ =>
+  }
+
+  if (north == false || south == false || east == false || west == false){
+    return false
+  } else{
+    return true
+  }
 }
 
 implicit class TuppleAdd(t: (Int, Int)) {
