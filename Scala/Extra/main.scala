@@ -1,210 +1,150 @@
 import scala.io.Source
-import scala.util.Random
 
-// Create a puzzle input file, as shown in Canvas (Pages/Description: Unequal)
-// • Read the file, print out the number of puzzles and their sizes
-// • Make a function that “solves” each puzzle by simply replacing each empty square by a random number between 1 and puzzle size.
-// • Create a output file using the above solution(s)
+
+
+sealed trait Item
+case object Up extends Item
+case object Down extends Item
+case object Left extends Item
+case object Right extends Item
+case object Empty extends Item
+case object Nothing extends Item
+case object Missing extends Item
+case class Number(number: Int) extends Item
+
+
+
+class Puzzle(wi: Int, he: Int, bo: Array[Array[Item]]) {
+  var width: Int = wi
+  var height: Int = he
+  var board: Array[Array[Item]] = bo
+
+  override def toString = {
+    var output = new StringBuilder(s"size: ${width}x${height}\n")
+    board foreach { row => row foreach { item => item match {
+      case Up => output.append(" A")
+      case Down => output.append(" V")
+      case Left => output.append("<")
+      case Right => output.append(">")
+      case Empty => output.append(" ")
+      case Nothing => output.append("  ")
+      case Missing => output.append("__")
+      case Number(number) => {
+        if (number < 10) output.append(" ")
+        output.append(number)
+      }
+    } }; output.append("\n") }
+    output.toString
+  }
+}
+
+def parsePuzzles(file: String): Array[Puzzle] = {
+  var puzzles = Array[Puzzle]()
+  var lines = Source.fromFile(file).getLines()
+  var amount = lines.next().split(" ")(1).toInt
+
+  // Read each puzzle
+  while (puzzles.length < amount) {
+    var size = lines.next().split(" ")(1).split("x").map(_.toInt)
+    var rows = Array[Array[Item]]()
+    for (line <- lines.take(size(1) * 2 - 1)) {
+      var row = Array[Item]()
+      for (i <- 0 to size(0) - 1) {
+        var value = line.slice(i * 3, i * 3 + 2)
+        value match {
+          case " A" => row :+= Up
+          case " V" => row :+= Down
+          case "__" => row :+= Missing
+          case "  " => row :+= Nothing
+          case _ => row :+= Number(value.trim().toInt)
+        }
+        line.slice(i * 3 + 2, i * 3 + 3) match {
+          case "<" => row :+= Left
+          case ">" => row :+= Right
+          case " " => row :+= Empty
+          case _ => 
+        }
+      }
+      rows :+= row
+    }
+    puzzles :+= new Puzzle(size(0), size(1), rows)
+  }
+
+  return puzzles
+}
+
+def isLegal(puzzle: Puzzle, row: Int, col: Int, num: Number) : Boolean = {
+    val sameRow = getRow(puzzle, row)
+    val sameCol = getColumn(puzzle, col)
+
+    //if (sameRow.contains(number) || sameCol.contains(number)){
+    //    return false;
+    //}
+
+
+    
+    
+
+    
+
+    
+    if puzzle.board(row)(col+1) == Left then return (num.number<getNumber(puzzle.board(row)(col+2)))
+    
+    
+    
+    
+    
+  
+    return true;
+
+    //constraints(row*size+col) match
+    //    case 1 => if number > puzzle(row*size+col-1) && puzzle(row*size+col-1) != 0 then return false;
+    //    case 2 => if number < puzzle(row*size+col-1) then return false;
+    //    case 4 => if number < puzzle(row*size+col-size) then return false;
+    //    case 8 => if number > puzzle(row*size+col-size) && puzzle(row*size+col-size) != 0 then return false;
+    //    case _ => return true;
+//
+    //return true;
+}
+
+def getNumber(value: Item) : Int = {
+  value match
+    case _: Number => val str = value.toString; val res = str.substring(str.indexOf("(")+1, str.indexOf(")")); return res.toInt;
+    case _: Missing$ => return 0
+    case _ => return -1
+}
+
+
+
+def getColumn(puzzle: Puzzle, row: Int) : Array[Item] = {
+    var column = Array.ofDim[Item](puzzle.board(0).length);
+    for (i <- 0 to column.length - 1) {
+        column(i) = puzzle.board(i)(row);
+    }
+    return column;
+}
+
+def getRow(puzzle: Puzzle, index: Int) : Array[Item] = {
+    val row = puzzle.board(index)
+    return row
+}
+
+// Get the width and height of puzzle
+def getSize(fileName : String) : Int = {
+    val lines = Source.fromFile(fileName).getLines()
+    val amount = lines.next().split(" ")(1).toInt
+    val size = lines.next().split(" ")(1).split("x").map(_.toInt)
+    return size(0)
+}
 
 @main def run() = {
-    val fileName = "./Scala/Extra/Unequal.txt";
-    var puzzle = getPuzzle(fileName);
-    puzzle = getConstraints(fileName, puzzle);
-    val result = solvePuzzle(puzzle)
-    printPuzzle(result);
-    
-}
-
-class Cell(var x : Int) {
-    var number = x;
-    var greaterThanEast = false;
-    var greaterThanWest = false;
-    var greaterThanNorth = false;
-    var greaterThanSouth = false;
-
-    def setNumber(x : Int) : Unit = {
-        number = x;
-    }
-    
-    def setGreaterThanEast() : Unit = {
-        greaterThanEast = true;
-    }
-    def setGreaterThanWest() : Unit = {
-        greaterThanWest = true;
-    }
-    def setGreaterThanNorth() : Unit = {
-        greaterThanNorth = true;
-    }
-    def setGreaterThanSouth() : Unit = {
-        greaterThanSouth = true;
-    }
-}
-
-def solvePuzzle(puzzle : Array[Array[Cell]]) : Array[Array[Cell]] = {
-    var row, col = 0;
-    var check = true;
-    var number = Random.nextInt(4);
-    
-    while(row < puzzle.length){
-        while(col < puzzle(row).length){
-            val column = getColumn(row, puzzle);
-            if (puzzle(row)(col).number == 0){
-                while (check == true){
-                    if (puzzle(row).exists(y => (y.number == number)) || column.contains(x => (x.number == number))){
-                        number = Random.between(1, 5);
-                        println(number)
-                    }
-                    else{
-                        puzzle(row)(col).setNumber(number);
-                        check = false;
-                    }
-                }
-            }
-            col += 1;
-            check = true;
-        }
-        row += 1;
-        col = 0;
-    }
-    return puzzle;
-}
-
-def getColumn(n: Int, a: Array[Array[Cell]]) = a.map{_(n)}
-
-def printColumn(col: Array[Cell]) : Unit = {
-    var row = 0;
-    println()
-    while(row < col.length){
-        print(col(row).number);
-        row += 1;
-    }
-    println()
-}
-
-// Read the file, print out the number of puzzles and their sizes
-def readFile(fileName : String) = {
-    for (line <- Source.fromFile(fileName).getLines){
-        if (line contains "puzzles"){
-            println(line);
-        } else if (line contains "size"){
-            println(line);
-        }
-    }
+    val filename = "./Scala/Extra/Unequal.txt"
+    val puzzles = parsePuzzles(filename)
+    val puzzle1 = puzzles(0)
+    val res = isLegal(puzzle1,0,12,Number(5))
+    println(res)
 }
 
 
-// Display the puzzle in console
-def printPuzzle(puzzle : Array[Array[Cell]]) : Unit = {
-    var row, col = 0;
-    while(row < puzzle.length){
-        while(col < puzzle(row).length){
-            print(puzzle(row)(col).number);
-            col += 1;
-        }
-        println();
-        row += 1;
-        col = 0;
-    }
-}
 
-// Generate a 2D array of the puzzle
-def getPuzzle(fileName : String): Array[Array[Cell]] = {
-    val size = getSize(fileName);
-    val puzzle = Array.ofDim[Cell](size, size);
-    var row = 0;
-    var column = 0;
-    var twice = 0;
 
-    for (line <- Source.fromFile(fileName).getLines.drop(2)){
-         for (i <- line){
-            if (i.isDigit){
-                puzzle(column)(row) = new Cell(i.toInt - 48)
-                row += 1;
-                if (row == size && column == size -1){
-                    return puzzle;
-                }
-                else if (row == size){
-                    row = 0;
-                    column += 1;
-                }
-            }
-            else if (i == '_' ) {
-                twice += 1;
-                if (twice == 2){
-                    puzzle(column)(row) = new Cell(0)
-                    twice = 0;
-                    row += 1;
-                }
-                if (row == size && column == size-1){
-                    return puzzle;
-                }
-                else if (row == size){
-                    row = 0;
-                    column += 1;
-                }
-            }
-         }
-    }
-    return puzzle;
-}
-
-def getConstraints(fileName : String, puzzle : Array[Array[Cell]]): Array[Array[Cell]] = {
-    val size = getSize(fileName);
-    var row = 0;
-    var column = 0;
-    var twice = 0;
-
-    for (line <- Source.fromFile(fileName).getLines.drop(2)){
-         for (i <- line){
-            if (i.isDigit){
-                row += 1;
-                if (row == size && column == size -1){
-                    return puzzle;
-                }
-                else if (row == size){
-                    row = 0;
-                    column += 1;
-                }
-            }
-            else if (i == '<'){
-                puzzle(column)(row).setGreaterThanWest();
-            }
-            else if(i == '>'){
-                puzzle(column)(row-1).setGreaterThanEast();
-            }
-            else if (i == 'A'){
-                puzzle(column)(row).setGreaterThanNorth();     
-            }
-            else if (i == 'V'){
-                puzzle(column-1)(row).setGreaterThanSouth()
-                puzzle(column-1)(row).setNumber(4) 
-
-            }
-            else if (i == '_' ) {
-                twice += 1;
-                if (twice == 2){
-                    twice = 0;
-                    row += 1;
-                }
-                if (row == size - 1 && column == size-1){
-                    return puzzle;
-                }
-                else if (row == size){
-                    row = 0;
-                    column += 1;
-                }
-            }
-         }
-    }
-    return puzzle;
-}
-
-// Get the width and height of a puzzle
-def getSize(fileName : String) : Int = {
-    for (line <- Source.fromFile(fileName).getLines){
-         if (line contains "size"){
-            return (line(line.length - 1).toInt - 48);
-        }
-    }
-    return -1;
-}
