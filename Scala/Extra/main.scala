@@ -181,12 +181,15 @@ def getSize(fileName : String) : Int = {
 }
 
 @main def run() = {
-  val filename = "./Scala/Extra/Unequal.txt"
   val t1 = System.nanoTime
+  val filename = "./Scala/Extra/Unequal.txt"
   val puzzles = parsePuzzles(filename)
-  var puzzle1 = puzzles(0)
-  val res = solvePuzzle(puzzle1)
-  println(puzzle1)
+
+  for (puzzle <- puzzles) {
+    solvePuzzle(puzzle)
+    println(puzzle)
+  }
+  
   val duration = (System.nanoTime - t1) / 1e9d
   println(duration)
 }
