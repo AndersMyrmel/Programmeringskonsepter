@@ -70,26 +70,24 @@ def parsePuzzles(file: String): Array[Puzzle] = {
 }
 
 def solvePuzzle(puzzle: Puzzle) : Boolean = {
-    val firstEmptySquare = findFirstElement(puzzle) // Find the first empty square in puzzle
-    if (firstEmptySquare == (-1,-1)) {
-        return true; // If no empty squares exist the puzzle is solved
+  val firstEmptySquare = findFirstElement(puzzle) // Find the first empty square in puzzle
+  if (firstEmptySquare == (-1,-1)) {
+    return true; // If no empty squares exist the puzzle is solved
+  }
+  val (row, col) = firstEmptySquare
+  for (number <- 1 to Math.ceil(puzzle.board(0).length / 2.0).toInt){
+    val legalMove = isLegal(puzzle, row, col, Number(number))
+    if (legalMove) {
+      puzzle.board(row)(col) = Number(number)
+      if (solvePuzzle(puzzle)) {
+        return true;
+      }
+      else {
+        puzzle.board(row)(col) = Missing; // Erase number and backtrack
+      }
     }
-
-    val (row, col) = firstEmptySquare
-
-    for (number <- 1 to Math.ceil(puzzle.board(0).length / 2.0).toInt){
-        val legalMove = isLegal(puzzle, row, col, Number(number))
-        if (legalMove) {
-            puzzle.board(row)(col) = Number(number)
-            if (solvePuzzle(puzzle)) {
-                return true;
-            }
-            else {
-                puzzle.board(row)(col) = Missing; // Erase number and backtrack
-            }
-        }
-    }
-    return false; 
+  }
+  return false; 
 }
 
 def isLegal(puzzle: Puzzle, row: Int, col: Int, num: Number) : Boolean = {
@@ -97,17 +95,17 @@ def isLegal(puzzle: Puzzle, row: Int, col: Int, num: Number) : Boolean = {
     val sameCol = getColumn(puzzle, col);
 
     if (sameRow.contains(num) || sameCol.contains(num)){
-        return false;
+      return false;
     }
 
-    return checkNeighbours(puzzle, row, col, num)
+    return checkNeighbours(puzzle, row, col, num);
 }
 
 def checkNeighbours(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolean = {
-  val previousRow = row -1;
-  val previousCol = col -1;
   val nextRow = row + 1;
   val nextCol = col + 1;
+  val previousRow = row -1;
+  val previousCol = col -1;
   var north,south,east,west = true;
 
   // check north
@@ -146,12 +144,12 @@ def checkNeighbours(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolea
 }
 
 def findFirstElement(puzzle: Puzzle): (Int, Int) = {
-    val row = puzzle.board.indexWhere(_.contains(Missing)) 
-    if (row > -1) {
-      return (row, puzzle.board(row).indexOf(Missing))
-    } else {
-      return (-1, -1)
-    }
+  val row = puzzle.board.indexWhere(_.contains(Missing)) 
+  if (row > -1) {
+    return (row, puzzle.board(row).indexOf(Missing))
+  } else {
+    return (-1, -1)
+  }
 }
 
 def getNumber(value: Item) : Int = {
@@ -162,33 +160,33 @@ def getNumber(value: Item) : Int = {
 }
 
 def getColumn(puzzle: Puzzle, row: Int) : Array[Item] = {
-    var column = Array.ofDim[Item](puzzle.board(0).length);
-    for (i <- 0 to column.length - 1) {
-        column(i) = puzzle.board(i)(row);
-    }
-    return column;
+  var column = Array.ofDim[Item](puzzle.board(0).length);
+  for (i <- 0 to column.length - 1) {
+      column(i) = puzzle.board(i)(row);
+  }
+  return column;
 }
 
 def getRow(puzzle: Puzzle, index: Int) : Array[Item] = {
-    val row = puzzle.board(index)
-    return row
+  val row = puzzle.board(index)
+  return row
 }
 
 // Get the width and height of puzzle
 def getSize(fileName : String) : Int = {
-    val lines = Source.fromFile(fileName).getLines()
-    val amount = lines.next().split(" ")(1).toInt
-    val size = lines.next().split(" ")(1).split("x").map(_.toInt)
-    return size(0)
+  val lines = Source.fromFile(fileName).getLines()
+  val amount = lines.next().split(" ")(1).toInt
+  val size = lines.next().split(" ")(1).split("x").map(_.toInt)
+  return size(0)
 }
 
 @main def run() = {
-    val filename = "./Scala/Extra/Unequal.txt"
-    val t1 = System.nanoTime
-    val puzzles = parsePuzzles(filename)
-    var puzzle1 = puzzles(0)
-    val res = solvePuzzle(puzzle1)
-    println(puzzle1)
-    val duration = (System.nanoTime - t1) / 1e9d
-    println(duration)
+  val filename = "./Scala/Extra/Unequal.txt"
+  val t1 = System.nanoTime
+  val puzzles = parsePuzzles(filename)
+  var puzzle1 = puzzles(0)
+  val res = solvePuzzle(puzzle1)
+  println(puzzle1)
+  val duration = (System.nanoTime - t1) / 1e9d
+  println(duration)
 }
