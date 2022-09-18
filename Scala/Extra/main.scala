@@ -74,37 +74,23 @@ def parsePuzzles(file: String): Array[Puzzle] = {
 }
 
 def isLegal(puzzle: Puzzle, row: Int, col: Int, num: Number) : Boolean = {
-    val sameRow = getRow(puzzle, row)
-    val sameCol = getColumn(puzzle, col)
+    val sameRow = getRow(puzzle, row);
+    val sameCol = getColumn(puzzle, col);
 
-    //if (sameRow.contains(number) || sameCol.contains(number)){
-    //    return false;
-    //}
+    if (sameRow.contains(num) || sameCol.contains(num)){
+        return false;
+    }
 
-
-    
-    
-
-    
-
-    
-    if puzzle.board(row)(col+1) == Left then return (num.number<getNumber(puzzle.board(row)(col+2)))
-    
-    
-    
-    
-    
+    try {
+      if puzzle.board(row)(col+1) == Left then return (num.number<getNumber(puzzle.board(row)(col+2)));
+      if puzzle.board(row)(col+1) == Right then return (num.number>getNumber(puzzle.board(row)(col+2)));
+      if puzzle.board(row+1)(col) == Up then return (num.number<getNumber(puzzle.board(row+2)(col)));
+      if puzzle.board(row+1)(col) == Down then return (num.number>getNumber(puzzle.board(row+2)(col)));
+    } catch {
+      case e: ArrayIndexOutOfBoundsException => 
+    }
   
     return true;
-
-    //constraints(row*size+col) match
-    //    case 1 => if number > puzzle(row*size+col-1) && puzzle(row*size+col-1) != 0 then return false;
-    //    case 2 => if number < puzzle(row*size+col-1) then return false;
-    //    case 4 => if number < puzzle(row*size+col-size) then return false;
-    //    case 8 => if number > puzzle(row*size+col-size) && puzzle(row*size+col-size) != 0 then return false;
-    //    case _ => return true;
-//
-    //return true;
 }
 
 def getNumber(value: Item) : Int = {
@@ -141,7 +127,8 @@ def getSize(fileName : String) : Int = {
     val filename = "./Scala/Extra/Unequal.txt"
     val puzzles = parsePuzzles(filename)
     val puzzle1 = puzzles(0)
-    val res = isLegal(puzzle1,0,12,Number(5))
+    println(puzzle1.board(0)(14))
+    val res = isLegal(puzzle1,0,14,Number(8))
     println(res)
 }
 
