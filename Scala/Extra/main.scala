@@ -82,9 +82,8 @@ def solvePuzzle(puzzle: Puzzle) : Boolean = {
       if (solvePuzzle(puzzle)) {
         return true;
       }
-      else {
-        puzzle.board(row)(col) = Missing; // Erase number and backtrack
-      }
+      puzzle.board(row)(col) = Missing; // Erase number and backtrack
+      println(puzzle)
     }
   }
   return false; 
@@ -115,6 +114,9 @@ def checkNeighbours(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolea
       case Up => north = (num.number > getNumber(puzzle.board(previousRow-1)(col)))
       case _ =>
   } 
+  if (north == false){
+    return north
+  }
 
   // check south
   if (0 <= nextRow && nextRow < puzzle.board(0).length){
@@ -122,6 +124,9 @@ def checkNeighbours(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolea
       case Down => south = (num.number > getNumber(puzzle.board(nextRow+1)(col)))
       case Up => if getNumber(puzzle.board(nextRow+1)(col)) != 0 then south = (num.number < getNumber(puzzle.board(nextRow+1)(col)))
       case _ =>
+  }
+  if (south == false){
+    return south
   }
   
   // check east
@@ -131,6 +136,9 @@ def checkNeighbours(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolea
       case Right => east = (num.number > getNumber(puzzle.board(row)(nextCol+1)))
       case _ => 
   }
+  if (east == false){
+    return east
+  }
 
   // check west
   if (0 <= previousCol && previousCol < puzzle.board(0).length) {
@@ -138,6 +146,9 @@ def checkNeighbours(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolea
       case Left => if getNumber(puzzle.board(row)(previousCol-1)) != 0 then west = (num.number > getNumber(puzzle.board(row)(previousCol-1)))
       case Right => west = (num.number < getNumber(puzzle.board(row)(previousCol-1)))
       case _ =>
+  }
+  if (west == false){
+    return west
   }
 
   return !List(north,south,east,west).contains(false)
