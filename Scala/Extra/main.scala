@@ -83,7 +83,6 @@ def solvePuzzle(puzzle: Puzzle) : Boolean = {
         return true;
       }
       puzzle.board(row)(col) = Missing; // Erase number and backtrack
-      println(puzzle)
     }
   }
   return false; 
@@ -163,12 +162,10 @@ def findFirstElement(puzzle: Puzzle): (Int, Int) = {
   }
 }
 
-def getNumber(value: Item) : Int = {
-  value match
-    case _: Number => val str = value.toString; val res = str.substring(str.indexOf("(")+1, str.indexOf(")")); return res.toInt;
-    case _: Missing$ => return 0
-    case _ => return -1
-}
+def getNumber(value: Item): Int = value match
+    case Number(number) => number
+    case Missing        => 0
+    case _              => -1
 
 def getColumn(puzzle: Puzzle, row: Int) : Array[Item] = {
   var column = Array.ofDim[Item](puzzle.board(0).length);
