@@ -154,18 +154,15 @@ def checkNeighbours(puzzle : Puzzle, row : Int, col : Int, num: Number) : Boolea
 }
 
 def findFirstElement(puzzle: Puzzle): (Int, Int) = {
-  val row = puzzle.board.indexWhere(_.contains(Missing)) 
-  if (row > -1) {
-    return (row, puzzle.board(row).indexOf(Missing))
-  } else {
-    return (-1, -1)
-  }
+  val row = puzzle.board.indexWhere(_.contains(Missing))
+  if (row > -1) (row, puzzle.board(row).indexOf(Missing)) else (-1, -1)
 }
 
-def getNumber(value: Item): Int = value match
+def getNumber(value: Item): Int = {value match
     case Number(number) => number
     case Missing        => 0
     case _              => -1
+}
 
 def getColumn(puzzle: Puzzle, row: Int) : Array[Item] = {
   var column = Array.ofDim[Item](puzzle.board(0).length);
