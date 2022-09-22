@@ -164,18 +164,9 @@ def getNumber(value: Item): Int = {value match
     case _              => -1
 }
 
-def getColumn(puzzle: Puzzle, row: Int) : Array[Item] = {
-  var column = Array.ofDim[Item](puzzle.board(0).length);
-  for (i <- 0 to column.length - 1) {
-      column(i) = puzzle.board(i)(row);
-  }
-  return column;
-}
+def getRow(puzzle: Puzzle, index: Int): Array[Item] = puzzle.board(index)
 
-def getRow(puzzle: Puzzle, index: Int) : Array[Item] = {
-  val row = puzzle.board(index)
-  return row
-}
+def getColumn(puzzle: Puzzle, row: Int): Array[Item] = puzzle.board.map(_(row))
 
 // Get the width and height of puzzle
 def getSize(fileName : String) : Int = {
