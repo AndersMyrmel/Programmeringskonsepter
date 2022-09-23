@@ -1,5 +1,5 @@
 import scala.io.Source
-import java.io._ 
+import java.io.FileWriter
 
 sealed trait Item
 case object Up extends Item
@@ -36,8 +36,8 @@ class Puzzle(wi: Int, he: Int, bo: Array[Array[Item]]) {
 }
 
 def parsePuzzles(file: String): Array[Puzzle] = {
-  var puzzles = Array[Puzzle]()
   var lines = Source.fromFile(file).getLines()
+  var puzzles = Array[Puzzle]()
   var amount = lines.next().split(" ")(1).toInt
 
   // Read each puzzle
@@ -181,14 +181,14 @@ def getSize(fileName : String) : Int = {
   val t1 = System.nanoTime
   val filename = "./Scala/Extra/Unequal.txt"
   val puzzles = parsePuzzles(filename)
-
-  val pw = new PrintWriter(new File("./Scala/Extra/Solved.txt" ))
+  val fw = new FileWriter("./Scala/Extra/Solved.txt", false)
   
   for (puzzle <- puzzles) {
     solvePuzzle(puzzle)
     println(puzzle)
-    pw.write(puzzle.toString+"\n")
+    fw.write(puzzle.toString+"\n")
   }
+  fw.close()
 
   val duration = (System.nanoTime - t1) / 1e9d
   println(duration)
