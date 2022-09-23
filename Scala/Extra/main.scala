@@ -1,4 +1,5 @@
 import scala.io.Source
+import java.io._ 
 
 sealed trait Item
 case object Up extends Item
@@ -181,11 +182,14 @@ def getSize(fileName : String) : Int = {
   val filename = "./Scala/Extra/Unequal.txt"
   val puzzles = parsePuzzles(filename)
 
+  val pw = new PrintWriter(new File("./Scala/Extra/Solved.txt" ))
+  
   for (puzzle <- puzzles) {
     solvePuzzle(puzzle)
     println(puzzle)
+    pw.write(puzzle.toString+"\n")
   }
-  
+
   val duration = (System.nanoTime - t1) / 1e9d
   println(duration)
 }
