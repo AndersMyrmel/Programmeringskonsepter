@@ -1,5 +1,6 @@
 import scala.io.Source
 import java.io.FileWriter
+import scala.compiletime.ops.string
 
 sealed trait Item
 case object Up extends Item
@@ -72,11 +73,9 @@ def parsePuzzles(file: String): Array[Puzzle] = {
 
 
 def solvePuzzle(puzzle: Puzzle) : Boolean = {
-  val firstEmptySquare = findFirstElement(puzzle) // Find the first empty square in puzzle
-  if (firstEmptySquare == (-1,-1)) {
-    return true; // If no empty squares exist the puzzle is solved
-  }
-  val (row, col) = firstEmptySquare
+  val (row, col) = findFirstElement(puzzle) // Find the first empty square in puzzle
+  if ((row, col) == (-1,-1)) return true; // If no empty squares exist the puzzle is solved}
+
   for (number <- 1 to Math.ceil(puzzle.board(0).length / 2.0).toInt){
     val legalMove = isLegal(puzzle, row, col, Number(number))
     if (legalMove) {
@@ -90,9 +89,16 @@ def solvePuzzle(puzzle: Puzzle) : Boolean = {
   return false; 
 }
 
-def startEmptyDown(puzzle: Puzzle, file: String) : Unit = {
-  val row = puzzle.board.indexWhere(_.contains(Down))
+def startSolve(puzzle: Puzzle, file: String) : Unit = {
   val size = getSize(file)
+  startLeft(puzzle, size)
+  startRight(puzzle, size)
+  startTop(puzzle, size)
+  startDown(puzzle, size)
+}
+
+def startDown(puzzle: Puzzle, size: Int) : Unit = {
+  val row = puzzle.board.indexWhere(_.contains(Down))
   if (row > -1) {
     val col = puzzle.board(row).indexOf(Down)
     if (puzzle.board(row+1)(col) == Number(2)){
@@ -104,9 +110,8 @@ def startEmptyDown(puzzle: Puzzle, file: String) : Unit = {
   }
 }
 
-def startEmptyTop(puzzle: Puzzle, file: String) : Unit = {
+def startTop(puzzle: Puzzle, size: Int) : Unit = {
   val row = puzzle.board.indexWhere(_.contains(Up))
-  val size = getSize(file)
   if (row > -1) {
     val col = puzzle.board(row).indexOf(Up)
     if (puzzle.board(row-1)(col) == Number(2)){
@@ -118,9 +123,8 @@ def startEmptyTop(puzzle: Puzzle, file: String) : Unit = {
   }
 }
 
-def startEmptyRight(puzzle: Puzzle, file: String) : Unit = {
+def startRight(puzzle: Puzzle, size: Int) : Unit = {
   val row = puzzle.board.indexWhere(_.contains(Right))
-  val size = getSize(file)
   if (row > -1) {
     val col = puzzle.board(row).indexOf(Right)
     if (puzzle.board(row)(col-1) == Number(2)) {
@@ -132,9 +136,8 @@ def startEmptyRight(puzzle: Puzzle, file: String) : Unit = {
   }
 }
 
-def startEmptyLeft(puzzle: Puzzle, file: String) : Unit = {
+def startLeft(puzzle: Puzzle, size: Int) : Unit = {
   val row = puzzle.board.indexWhere(_.contains(Left))
-  val size = getSize(file)
   if (row > -1) {
     val col = puzzle.board(row).indexOf(Left)
     if (puzzle.board(row)(col+1) == Number(2)) {
@@ -244,10 +247,6 @@ def getSize(fileName : String) : Int = {
 
   
   for (puzzle <- puzzles) {
-    startEmptyLeft(puzzle, filename)
-    startEmptyRight(puzzle, filename)
-    startEmptyTop(puzzle, filename)
-    startEmptyDown(puzzle, filename)
     solvePuzzle(puzzle)
     println(puzzle)
     //fw.write(puzzle.toString+"\n")
