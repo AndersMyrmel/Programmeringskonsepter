@@ -101,12 +101,8 @@ def startDown(puzzle: Puzzle, size: Int) : Unit = {
   val row = puzzle.board.indexWhere(_.contains(Down))
   if (row > -1) {
     val col = puzzle.board(row).indexOf(Down)
-    if (puzzle.board(row+1)(col) == Number(2)){
-      puzzle.board(row-1)(col) = Number(1)
-    }
-    else if (puzzle.board(row+1)(col) == Number(size-1)){
-      puzzle.board(row+1)(col) = Number(size)
-    }
+    if (puzzle.board(row+1)(col) == Number(2)) puzzle.board(row-1)(col) = Number(1)
+    else if (puzzle.board(row+1)(col) == Number(size-1)) puzzle.board(row+1)(col) = Number(size)
   }
 }
 
@@ -114,12 +110,8 @@ def startTop(puzzle: Puzzle, size: Int) : Unit = {
   val row = puzzle.board.indexWhere(_.contains(Up))
   if (row > -1) {
     val col = puzzle.board(row).indexOf(Up)
-    if (puzzle.board(row-1)(col) == Number(2)){
-      puzzle.board(row+1)(col) = Number(1)
-    }
-    else if ((puzzle.board(row-1)(col) == Number(size-1))){
-      puzzle.board(row+1)(col) = Number(size)
-    }
+    if (puzzle.board(row-1)(col) == Number(2)) puzzle.board(row+1)(col) = Number(1)
+    else if ((puzzle.board(row-1)(col) == Number(size-1))) puzzle.board(row+1)(col) = Number(size)
   }
 }
 
@@ -127,12 +119,8 @@ def startRight(puzzle: Puzzle, size: Int) : Unit = {
   val row = puzzle.board.indexWhere(_.contains(Right))
   if (row > -1) {
     val col = puzzle.board(row).indexOf(Right)
-    if (puzzle.board(row)(col-1) == Number(2)) {
-      puzzle.board(row)(col+1) = Number(1)
-    }
-    else if(puzzle.board(row)(col+1) == Number(size-1)){
-      puzzle.board(row)(col-1) = Number(size)
-    }
+    if (puzzle.board(row)(col-1) == Number(2)) puzzle.board(row)(col+1) = Number(1)
+    else if(puzzle.board(row)(col+1) == Number(size-1)) puzzle.board(row)(col-1) = Number(size)
   }
 }
 
@@ -140,24 +128,15 @@ def startLeft(puzzle: Puzzle, size: Int) : Unit = {
   val row = puzzle.board.indexWhere(_.contains(Left))
   if (row > -1) {
     val col = puzzle.board(row).indexOf(Left)
-    if (puzzle.board(row)(col+1) == Number(2)) {
-      puzzle.board(row)(col-1) = Number(1)
-    }
-    if (puzzle.board(row)(col-1) == Number(size-1)) {
-      puzzle.board(row)(col+1) = Number(size)
-    }
+    if (puzzle.board(row)(col+1) == Number(2)) puzzle.board(row)(col-1) = Number(1)
+    else if (puzzle.board(row)(col-1) == Number(size-1)) puzzle.board(row)(col+1) = Number(size)
   }
 }
-
 
 def isLegal(puzzle: Puzzle, row: Int, col: Int, num: Number) : Boolean = {
     val sameRow = getRow(puzzle, row);
     val sameCol = getColumn(puzzle, col);
-
-    if (sameRow.contains(num) || sameCol.contains(num)){
-      return false;
-    }
-
+    if (sameRow.contains(num) || sameCol.contains(num)) return false;
     return checkNeighbours(puzzle, row, col, num);
 }
 
