@@ -70,6 +70,7 @@ def parsePuzzles(file: String): Array[Puzzle] = {
   return puzzles
 }
 
+
 def solvePuzzle(puzzle: Puzzle) : Boolean = {
   val firstEmptySquare = findFirstElement(puzzle) // Find the first empty square in puzzle
   if (firstEmptySquare == (-1,-1)) {
@@ -88,6 +89,63 @@ def solvePuzzle(puzzle: Puzzle) : Boolean = {
   }
   return false; 
 }
+
+def startEmptyDown(puzzle: Puzzle, file: String) : Unit = {
+  val row = puzzle.board.indexWhere(_.contains(Down))
+  val size = getSize(file)
+  if (row > -1) {
+    val col = puzzle.board(row).indexOf(Down)
+    if (puzzle.board(row+1)(col) == Number(2)){
+      puzzle.board(row-1)(col) = Number(1)
+    }
+    else if (puzzle.board(row+1)(col) == Number(size-1)){
+      puzzle.board(row+1)(col) = Number(size)
+    }
+  }
+}
+
+def startEmptyTop(puzzle: Puzzle, file: String) : Unit = {
+  val row = puzzle.board.indexWhere(_.contains(Up))
+  val size = getSize(file)
+  if (row > -1) {
+    val col = puzzle.board(row).indexOf(Up)
+    if (puzzle.board(row-1)(col) == Number(2)){
+      puzzle.board(row+1)(col) = Number(1)
+    }
+    else if ((puzzle.board(row-1)(col) == Number(size-1))){
+      puzzle.board(row+1)(col) = Number(size)
+    }
+  }
+}
+
+def startEmptyRight(puzzle: Puzzle, file: String) : Unit = {
+  val row = puzzle.board.indexWhere(_.contains(Right))
+  val size = getSize(file)
+  if (row > -1) {
+    val col = puzzle.board(row).indexOf(Right)
+    if (puzzle.board(row)(col-1) == Number(2)) {
+      puzzle.board(row)(col+1) = Number(1)
+    }
+    else if(puzzle.board(row)(col+1) == Number(size-1)){
+      puzzle.board(row)(col-1) = Number(size)
+    }
+  }
+}
+
+def startEmptyLeft(puzzle: Puzzle, file: String) : Unit = {
+  val row = puzzle.board.indexWhere(_.contains(Left))
+  val size = getSize(file)
+  if (row > -1) {
+    val col = puzzle.board(row).indexOf(Left)
+    if (puzzle.board(row)(col+1) == Number(2)) {
+      puzzle.board(row)(col-1) = Number(1)
+    }
+    if (puzzle.board(row)(col-1) == Number(size-1)) {
+      puzzle.board(row)(col+1) = Number(size)
+    }
+  }
+}
+
 
 def isLegal(puzzle: Puzzle, row: Int, col: Int, num: Number) : Boolean = {
     val sameRow = getRow(puzzle, row);
@@ -181,14 +239,20 @@ def getSize(fileName : String) : Int = {
   val t1 = System.nanoTime
   val filename = "./Scala/Extra/Unequal.txt"
   val puzzles = parsePuzzles(filename)
-  val fw = new FileWriter("./Scala/Extra/Solved.txt", false)
+  //val fw = new FileWriter("./Scala/Extra/Solved.txt", false)
+
+
   
   for (puzzle <- puzzles) {
+    startEmptyLeft(puzzle, filename)
+    startEmptyRight(puzzle, filename)
+    startEmptyTop(puzzle, filename)
+    startEmptyDown(puzzle, filename)
     solvePuzzle(puzzle)
     println(puzzle)
-    fw.write(puzzle.toString+"\n")
+    //fw.write(puzzle.toString+"\n")
   }
-  fw.close()
+  //fw.close()
 
   val duration = (System.nanoTime - t1) / 1e9d
   println(duration)
