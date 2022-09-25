@@ -221,16 +221,13 @@ def getSize(fileName : String) : Int = {
   val t1 = System.nanoTime
   val filename = "./Scala/Extra/Unequal.txt"
   val puzzles = parsePuzzles(filename)
-  //val fw = new FileWriter("./Scala/Extra/Solved.txt", false)
+  val fw = new FileWriter("./Scala/Extra/Solved.txt", false)
 
-
-  
   for (puzzle <- puzzles) {
     solvePuzzle(puzzle)
-    println(puzzle)
-    //fw.write(puzzle.toString+"\n")
+    fw.write(puzzle.toString+"\n")
   }
-  //fw.close()
+  fw.close()
 
   val duration = (System.nanoTime - t1) / 1e9d
   println(duration)
