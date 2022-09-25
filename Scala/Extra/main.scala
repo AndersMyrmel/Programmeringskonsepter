@@ -230,5 +230,5 @@ def getSize(fileName : String) : Int = {
   fw.close()
 
   val duration = (System.nanoTime - t1) / 1e9d
-  println(duration)
+  println(s"Time spent: $duration")
 }
