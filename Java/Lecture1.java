@@ -1,5 +1,3 @@
-import java.util.List;
-
 class Lecture1 {
 	public static void main(String[] args) {
 		Person p = new Person();
@@ -12,10 +10,10 @@ class Lecture1 {
 }
 
 class Person {
-	public String name;
-	public Integer id;
-	public Integer phone;
-	public String email;
+	String name;
+	Integer id;
+	Integer phone;
+	String email;
 
 	public void setName(String s) {
 		this.name = s;
