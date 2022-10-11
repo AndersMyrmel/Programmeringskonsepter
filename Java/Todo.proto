@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package todo;
+
+message todoListViewModel {
+    int32 Error = 1;
+
+    message todoLists {
+        string ErrorMessage = 1;
+        bool IsEditingListTitle = 2;
+        string NewTodoTitle = 3;
+        string Title = 4;
+
+        message todos{
+            string ErrorMessage = 1;
+            bool IsDone = 2;
+            string Title = 3;
+        }
+
+        repeated todos TodoItem = 5;
+    }
+
+    repeated todoLists TodoList = 2;
+}
