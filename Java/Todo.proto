@@ -11,7 +11,7 @@ message todoListViewModel {
         string NewTodoTitle = 3;
         string Title = 4;
 
-        message todos{
+        message todos {
             string ErrorMessage = 1;
             bool IsDone = 2;
             string Title = 3;
